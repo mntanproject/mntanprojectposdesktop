@@ -1,0 +1,106 @@
+{
+  "_note1": "KEEP THIS FILE! Check it into a version control system (VCS) like git.",
+  "_note2": "ObjectBox manages crucial IDs for your object model. See docs for details.",
+  "_note3": "If you have VCS merge conflicts, you must resolve them according to ObjectBox docs.",
+  "entities": [
+    {
+      "id": "1:118162346291892586",
+      "lastPropertyId": "11:1748644272730123241",
+      "name": "Supplier",
+      "properties": [
+        {
+          "id": "1:4360497521093110839",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:8242346750859098379",
+          "name": "company",
+          "type": 9
+        },
+        {
+          "id": "3:4036587380161241380",
+          "name": "name",
+          "type": 9
+        },
+        {
+          "id": "4:2409824995150222284",
+          "name": "contactno",
+          "type": 9
+        },
+        {
+          "id": "5:6202542901249867552",
+          "name": "email",
+          "type": 9
+        },
+        {
+          "id": "6:8361255238221741965",
+          "name": "street",
+          "type": 9
+        },
+        {
+          "id": "7:9169164741603846919",
+          "name": "city",
+          "type": 9
+        },
+        {
+          "id": "8:7612731329295616645",
+          "name": "state",
+          "type": 9
+        },
+        {
+          "id": "9:8583347077330895747",
+          "name": "country",
+          "type": 9
+        },
+        {
+          "id": "10:288799869396900120",
+          "name": "bank",
+          "type": 9
+        },
+        {
+          "id": "11:1748644272730123241",
+          "name": "notes",
+          "type": 9
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "2:4422835441606432467",
+      "lastPropertyId": "3:6093348282066508667",
+      "name": "Customer",
+      "properties": [
+        {
+          "id": "1:8970205849757570235",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:8842403407573568000",
+          "name": "name",
+          "type": 9
+        },
+        {
+          "id": "3:6093348282066508667",
+          "name": "company",
+          "type": 9
+        }
+      ],
+      "relations": []
+    }
+  ],
+  "lastEntityId": "2:4422835441606432467",
+  "lastIndexId": "0:0",
+  "lastRelationId": "0:0",
+  "lastSequenceId": "0:0",
+  "modelVersion": 5,
+  "modelVersionParserMinimum": 5,
+  "retiredEntityUids": [],
+  "retiredIndexUids": [],
+  "retiredPropertyUids": [],
+  "retiredRelationUids": [],
+  "version": 1
+}

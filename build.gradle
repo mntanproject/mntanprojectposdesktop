@@ -1,0 +1,31 @@
+buildscript {
+    ext.objectboxVersion = '2.8.1'
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath "io.objectbox:objectbox-gradle-plugin:$objectboxVersion"
+    }
+}
+
+apply plugin: 'java-library'
+apply plugin: 'io.objectbox'
+
+group 'com.mntanproject.pos'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+    jcenter()
+}
+
+dependencies {
+    // Optional: include all native libraries for distribution
+    implementation "io.objectbox:objectbox-linux:$objectboxVersion"
+    implementation "io.objectbox:objectbox-macos:$objectboxVersion"
+    implementation "io.objectbox:objectbox-windows:$objectboxVersion"
+    implementation files('mLibs/mnserver-1.0.jar')
+    implementation 'com.google.code.gson:gson:2.8.6'
+}
+
+apply plugin: 'io.objectbox'

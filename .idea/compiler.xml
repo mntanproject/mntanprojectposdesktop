@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Gradle Imported" enabled="true">
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.objectbox/objectbox-processor/2.8.1/d7895b444c3076e7e296f8737722beca41486e9c/objectbox-processor-2.8.1.jar" />
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.objectbox/objectbox-code-modifier/2.8.1/4dd1db34facd6800e1a521f50528684c269a4064/objectbox-code-modifier-2.8.1.jar" />
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.objectbox/objectbox-generator/2.8.1/5662faabfbbe97189333d44e71f64aaa5ed505b8/objectbox-generator-2.8.1.jar" />
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib-jdk8/1.4.10/998caa30623f73223194a8b657abd2baec4880ea/kotlin-stdlib-jdk8-1.4.10.jar" />
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-reflect/1.4.10/e2b3c6695eee6085e606d96d685396dce23a3a06/kotlin-reflect-1.4.10.jar" />
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.objectbox/objectbox-java/2.8.1/1f95748cda1c5c0890987ee79bf5fa9561dbc169/objectbox-java-2.8.1.jar" />
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.objectbox/objectbox-java-api/2.8.1/565f50f0d9f4a45a55dadf2f0cb4872aececa67d/objectbox-java-api-2.8.1.jar" />
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/net.ltgt.gradle.incap/incap/0.2/c73e3db9bee414d6ee27995d951fcdbee09acad/incap-0.2.jar" />
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.greenrobot/essentials/3.1.0/3bd606485d1626d3e61efa265e53235cfc47a8b6/essentials-3.1.0.jar" />
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.squareup.moshi/moshi/1.9.2/1b1336538beda8aa41cbfabf541b8a964e7f6045/moshi-1.9.2.jar" />
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.freemarker/freemarker/2.3.28/7200064467a935052f99d114c2c05c3d189bc6d6/freemarker-2.3.28.jar" />
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib-jdk7/1.4.10/30e46450b0bb3dbf43898d2f461be4a942784780/kotlin-stdlib-jdk7-1.4.10.jar" />
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib/1.4.10/ea29e063d2bbe695be13e9d044dcfb0c7add398e/kotlin-stdlib-1.4.10.jar" />
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.code.findbugs/jsr305/3.0.2/25ea2e8b0c338a877313bd4672d3fe056ea78f0d/jsr305-3.0.2.jar" />
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.flatbuffers/flatbuffers-java/1.12.0/8201cc7b511177a37071249e891f2f2fea4b32e9/flatbuffers-java-1.12.0.jar" />
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.squareup.okio/okio/1.16.0/975078d246baf08b0ba948c131a2ef6d5a227c71/okio-1.16.0.jar" />
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib-common/1.4.10/6229be3465805c99db1142ad75e6c6ddeac0b04c/kotlin-stdlib-common-1.4.10.jar" />
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains/annotations/13.0/919f0dfe192fb4e063e7dacadee7f8bb9a2672a9/annotations-13.0.jar" />
+        </processorPath>
+        <module name="mntanprojectposdesktop.main" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel target="1.8" />
+  </component>
+</project>
