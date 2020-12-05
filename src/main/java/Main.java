@@ -13,6 +13,8 @@ public class Main {
         MnServer server = new MnServer(9000);
         HashMap<String,String> routes = new HashMap<String,String>();
         routes.put("supplier","com.mntanproject.pos.supplier.SupplierApi");
+        routes.put("customer","com.mntanproject.pos.customer.CustomerApi");
+
         server.getRegisteredRoute().setRegisteredRoutes(routes);
         server.startServer();
 

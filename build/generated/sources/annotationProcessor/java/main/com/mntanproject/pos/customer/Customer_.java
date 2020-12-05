@@ -40,11 +40,43 @@ public final class Customer_ implements EntityInfo<Customer> {
     public final static io.objectbox.Property<Customer> company =
         new io.objectbox.Property<>(__INSTANCE, 2, 3, String.class, "company");
 
+    public final static io.objectbox.Property<Customer> contact =
+        new io.objectbox.Property<>(__INSTANCE, 3, 4, String.class, "contact");
+
+    public final static io.objectbox.Property<Customer> email =
+        new io.objectbox.Property<>(__INSTANCE, 4, 5, String.class, "email");
+
+    public final static io.objectbox.Property<Customer> street =
+        new io.objectbox.Property<>(__INSTANCE, 5, 6, String.class, "street");
+
+    public final static io.objectbox.Property<Customer> city =
+        new io.objectbox.Property<>(__INSTANCE, 6, 7, String.class, "city");
+
+    public final static io.objectbox.Property<Customer> state =
+        new io.objectbox.Property<>(__INSTANCE, 7, 8, String.class, "state");
+
+    public final static io.objectbox.Property<Customer> country =
+        new io.objectbox.Property<>(__INSTANCE, 8, 9, String.class, "country");
+
+    public final static io.objectbox.Property<Customer> bank =
+        new io.objectbox.Property<>(__INSTANCE, 9, 10, String.class, "bank");
+
+    public final static io.objectbox.Property<Customer> notes =
+        new io.objectbox.Property<>(__INSTANCE, 10, 11, String.class, "notes");
+
     @SuppressWarnings("unchecked")
     public final static io.objectbox.Property<Customer>[] __ALL_PROPERTIES = new io.objectbox.Property[]{
         id,
         name,
-        company
+        company,
+        contact,
+        email,
+        street,
+        city,
+        state,
+        country,
+        bank,
+        notes
     };
 
     public final static io.objectbox.Property<Customer> __ID_PROPERTY = id;

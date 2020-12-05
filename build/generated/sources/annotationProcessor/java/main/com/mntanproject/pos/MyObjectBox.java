@@ -66,13 +66,21 @@ public class MyObjectBox {
 
     private static void buildEntityCustomer(ModelBuilder modelBuilder) {
         EntityBuilder entityBuilder = modelBuilder.entity("Customer");
-        entityBuilder.id(2, 4422835441606432467L).lastPropertyId(3, 6093348282066508667L);
+        entityBuilder.id(2, 4422835441606432467L).lastPropertyId(11, 798660710016385113L);
         entityBuilder.flags(io.objectbox.model.EntityFlags.USE_NO_ARG_CONSTRUCTOR);
 
         entityBuilder.property("id", PropertyType.Long).id(1, 8970205849757570235L)
                 .flags(PropertyFlags.ID);
         entityBuilder.property("name", PropertyType.String).id(2, 8842403407573568000L);
         entityBuilder.property("company", PropertyType.String).id(3, 6093348282066508667L);
+        entityBuilder.property("contact", PropertyType.String).id(4, 7890842805819307857L);
+        entityBuilder.property("email", PropertyType.String).id(5, 2839622671515658098L);
+        entityBuilder.property("street", PropertyType.String).id(6, 3735685070254386709L);
+        entityBuilder.property("city", PropertyType.String).id(7, 7318695997709441567L);
+        entityBuilder.property("state", PropertyType.String).id(8, 6996923855463718789L);
+        entityBuilder.property("country", PropertyType.String).id(9, 7370267254249061484L);
+        entityBuilder.property("bank", PropertyType.String).id(10, 781322659069117860L);
+        entityBuilder.property("notes", PropertyType.String).id(11, 798660710016385113L);
 
 
         entityBuilder.entityDone();

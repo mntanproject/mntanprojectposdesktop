@@ -25,6 +25,14 @@ public final class CustomerCursor extends Cursor<Customer> {
 
     private final static int __ID_name = Customer_.name.id;
     private final static int __ID_company = Customer_.company.id;
+    private final static int __ID_contact = Customer_.contact.id;
+    private final static int __ID_email = Customer_.email.id;
+    private final static int __ID_street = Customer_.street.id;
+    private final static int __ID_city = Customer_.city.id;
+    private final static int __ID_state = Customer_.state.id;
+    private final static int __ID_country = Customer_.country.id;
+    private final static int __ID_bank = Customer_.bank.id;
+    private final static int __ID_notes = Customer_.notes.id;
 
     public CustomerCursor(io.objectbox.Transaction tx, long cursor, BoxStore boxStore) {
         super(tx, cursor, Customer_.__INSTANCE, boxStore);
@@ -46,9 +54,35 @@ public final class CustomerCursor extends Cursor<Customer> {
         int __id1 = name != null ? __ID_name : 0;
         String company = entity.company;
         int __id2 = company != null ? __ID_company : 0;
+        String contact = entity.contact;
+        int __id3 = contact != null ? __ID_contact : 0;
+        String email = entity.email;
+        int __id4 = email != null ? __ID_email : 0;
 
-        long __assignedId = collect313311(cursor, entity.id, PUT_FLAG_FIRST | PUT_FLAG_COMPLETE,
+        collect400000(cursor, 0, PUT_FLAG_FIRST,
                 __id1, name, __id2, company,
+                __id3, contact, __id4, email);
+
+        String street = entity.street;
+        int __id5 = street != null ? __ID_street : 0;
+        String city = entity.city;
+        int __id6 = city != null ? __ID_city : 0;
+        String state = entity.state;
+        int __id7 = state != null ? __ID_state : 0;
+        String country = entity.country;
+        int __id8 = country != null ? __ID_country : 0;
+
+        collect400000(cursor, 0, 0,
+                __id5, street, __id6, city,
+                __id7, state, __id8, country);
+
+        String bank = entity.bank;
+        int __id9 = bank != null ? __ID_bank : 0;
+        String notes = entity.notes;
+        int __id10 = notes != null ? __ID_notes : 0;
+
+        long __assignedId = collect313311(cursor, entity.id, PUT_FLAG_COMPLETE,
+                __id9, bank, __id10, notes,
                 0, null, 0, null,
                 0, 0, 0, 0,
                 0, 0, 0, 0,
