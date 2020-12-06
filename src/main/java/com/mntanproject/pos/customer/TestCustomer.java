@@ -18,8 +18,20 @@ public class TestCustomer {
         Box<Supplier> supplierBox = ObjectBoxDB.get().boxFor(Supplier.class);
         //Property<Supplier> supplierProperty = new Property<Supplier>(;
         //supplierProperty.id = 1;
+        Class<?> clazz = Customer_.class;
+        try {
+            Field id = clazz.getField("id");
+            Object ido = id.get(clazz.newInstance());
 
-
+            System.out.println(id);
+            System.out.println(ido);
+        } catch (NoSuchFieldException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        }
         //Supplier supplierQ = supplierBox.query().equal(UserProperties.Role, 2).build().findFirst();
 
     }

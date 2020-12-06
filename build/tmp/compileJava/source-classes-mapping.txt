@@ -8,9 +8,9 @@ com/mntanproject/pos/supplier/SupplierApi.java
  com.mntanproject.pos.supplier.SupplierApi
 Main.java
  Main
-com/mntanproject/pos/customer/CustomerApi.java
- com.mntanproject.pos.customer.CustomerApi
-com/mntanproject/pos/database/GenericApiDao.java
- com.mntanproject.pos.database.GenericApiDao
 com/mntanproject/pos/customer/TestCustomer.java
  com.mntanproject.pos.customer.TestCustomer
+com/mntanproject/pos/database/GenericApiDao.java
+ com.mntanproject.pos.database.GenericApiDao
+com/mntanproject/pos/customer/CustomerApi.java
+ com.mntanproject.pos.customer.CustomerApi

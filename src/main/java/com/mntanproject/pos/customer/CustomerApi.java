@@ -1,15 +1,14 @@
 package com.mntanproject.pos.customer;
 
 import com.mntanproject.pos.database.GenericApiDao;
-import mntanproject.core.server.response.ContentType;
-import mntanproject.core.server.response.HttpResponse;
-import mntanproject.core.server.response.StatusCode;
 
 public class CustomerApi extends GenericApiDao<Customer> {
 
 
+    private static final Class<?> generatedCustomer = Customer_.class;
+
     public CustomerApi() {
-        super();
+        super(generatedCustomer);
         System.out.println("CustomerApi called");
 
     }
