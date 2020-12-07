@@ -100,4 +100,21 @@ public class Customer {
     public void setNotes(String notes) {
         this.notes = notes;
     }
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "id=" + id +
+                ", name=" + name  +
+                ", company=" + company  +
+                ", contact=" + contact  +
+                ", email=" + email  +
+                ", street=" + street  +
+                ", city=" + city  +
+                ", state=" + state +
+                ", country=" + country  +
+                ", bank=" + bank +
+                ", notes=" + notes +
+                '}';
+    }
 }

@@ -1,15 +1,15 @@
-com/mntanproject/pos/supplier/Supplier.java
- com.mntanproject.pos.supplier.Supplier
-com/mntanproject/pos/database/ObjectBoxDB.java
- com.mntanproject.pos.database.ObjectBoxDB
-com/mntanproject/pos/customer/Customer.java
- com.mntanproject.pos.customer.Customer
-com/mntanproject/pos/supplier/SupplierApi.java
- com.mntanproject.pos.supplier.SupplierApi
-Main.java
- Main
 com/mntanproject/pos/customer/TestCustomer.java
  com.mntanproject.pos.customer.TestCustomer
+com/mntanproject/pos/supplier/Supplier.java
+ com.mntanproject.pos.supplier.Supplier
+Main.java
+ Main
+com/mntanproject/pos/supplier/SupplierApi.java
+ com.mntanproject.pos.supplier.SupplierApi
+com/mntanproject/pos/customer/Customer.java
+ com.mntanproject.pos.customer.Customer
+com/mntanproject/pos/database/ObjectBoxDB.java
+ com.mntanproject.pos.database.ObjectBoxDB
 com/mntanproject/pos/database/GenericApiDao.java
  com.mntanproject.pos.database.GenericApiDao
 com/mntanproject/pos/customer/CustomerApi.java
