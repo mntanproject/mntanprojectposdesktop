@@ -5,13 +5,13 @@
       <profile name="Gradle Imported" enabled="true">
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="false">
-          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.objectbox/objectbox-processor/2.8.1/d7895b444c3076e7e296f8737722beca41486e9c/objectbox-processor-2.8.1.jar" />
-          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.objectbox/objectbox-code-modifier/2.8.1/4dd1db34facd6800e1a521f50528684c269a4064/objectbox-code-modifier-2.8.1.jar" />
-          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.objectbox/objectbox-generator/2.8.1/5662faabfbbe97189333d44e71f64aaa5ed505b8/objectbox-generator-2.8.1.jar" />
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.objectbox/objectbox-processor/2.8.0/26d90d91ad32d810e21af5e62ef5ea5af27803db/objectbox-processor-2.8.0.jar" />
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.objectbox/objectbox-code-modifier/2.8.0/17fdf947960c26af4ec192481c514c40b711b211/objectbox-code-modifier-2.8.0.jar" />
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.objectbox/objectbox-generator/2.8.0/3858f0592cd1897755db0c25bd7bd49e81b4ed6a/objectbox-generator-2.8.0.jar" />
           <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib-jdk8/1.4.10/998caa30623f73223194a8b657abd2baec4880ea/kotlin-stdlib-jdk8-1.4.10.jar" />
           <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-reflect/1.4.10/e2b3c6695eee6085e606d96d685396dce23a3a06/kotlin-reflect-1.4.10.jar" />
-          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.objectbox/objectbox-java/2.8.1/1f95748cda1c5c0890987ee79bf5fa9561dbc169/objectbox-java-2.8.1.jar" />
-          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.objectbox/objectbox-java-api/2.8.1/565f50f0d9f4a45a55dadf2f0cb4872aececa67d/objectbox-java-api-2.8.1.jar" />
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.objectbox/objectbox-java/2.8.0/e5854ac32c3c552db4c55656ba1cb993469cde65/objectbox-java-2.8.0.jar" />
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.objectbox/objectbox-java-api/2.8.0/5cfa34f0bff4c675909e25a4b6f065f4fe2da817/objectbox-java-api-2.8.0.jar" />
           <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/net.ltgt.gradle.incap/incap/0.2/c73e3db9bee414d6ee27995d951fcdbee09acad/incap-0.2.jar" />
           <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.greenrobot/essentials/3.1.0/3bd606485d1626d3e61efa265e53235cfc47a8b6/essentials-3.1.0.jar" />
           <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.squareup.moshi/moshi/1.9.2/1b1336538beda8aa41cbfabf541b8a964e7f6045/moshi-1.9.2.jar" />

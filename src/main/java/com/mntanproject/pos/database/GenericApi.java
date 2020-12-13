@@ -15,7 +15,7 @@ import java.lang.reflect.*;
 import java.util.HashMap;
 import java.util.List;
 
-public class GenericApiDao<T> {
+public class GenericApi<T> {
 
 
     private Class<T> type;
@@ -25,120 +25,18 @@ public class GenericApiDao<T> {
     Gson gson;
     Property<T> property;
     Class<?> generatedClass;
+    Util<T> util;
 
-    public GenericApiDao(Class<?> generatedClass) {
-        //this.type = type;
-
+    public GenericApi(Class<?> generatedClass) {
         this.gson = new GsonBuilder().serializeNulls().create();
-
         this.type = (Class<T>) ((ParameterizedType) getClass()
                 .getGenericSuperclass()).getActualTypeArguments()[0];
         this.objBox = ObjectBoxDB.get().boxFor(type);
         this.generatedClass = generatedClass;
-
+        this.util = new Util<T>(type);
         System.out.println("Type: " + type);
         //System.exit(1);
     }
-
-    public T uriParamToObject(String param) {
-
-        T returnedObject = null;
-        String[] splits = param.split("&");
-        HashMap<String, String> mappedParam = new HashMap<String, String>();
-
-        for (String string : splits) {
-            String[] keyValue = null;
-            keyValue = string.split("=");
-            System.out.println("key size: " + keyValue.length);
-            if (keyValue.length == 2) {
-                mappedParam.put(keyValue[0], keyValue[1]);
-            }
-        }
-        String json = gson.toJson(mappedParam);
-        if (!isEmptyObject(json)){
-            returnedObject = gson.fromJson(json, type);
-        }
-        System.out.println(json);
-
-
-
-        return returnedObject;
-    }
-    
-    public boolean isEmptyObject(String json){
-        boolean empty = true;
-        Field[] fields = type.getDeclaredFields();
-        for (Field field : fields) {
-            if (json.contains(field.getName()))
-            {
-                empty = false;
-            }
-        }
-        return empty;
-    }
-
-    public String objectToJson(T object) {
-
-        String json = gson.toJson(object, type);
-        return json;
-    }
-    public T jsonToObject(String json){
-        T obj = null;
-        obj = gson.fromJson(json, type);
-        return obj;
-    }
-
-    public boolean isValidJson(String params) {
-        boolean valid = false;
-        try {
-
-            T obj = gson.fromJson(params, type);
-            System.out.println("object: " + obj);
-            System.out.println("json: " + objectToJson(obj));
-            valid = true;
-        } catch (Exception e) {
-            //e.printStackTrace();
-            return false;
-        }
-        return valid;
-    }
-
-    public HttpResponse add(String params) {
-        T obj = null;
-        String returnMsg = null;
-        HttpResponse response = new HttpResponse(StatusCode.ERROR, ContentType.JSON, gson.toJson("Failed to add user"));
-
-        if(isValidJson(params)){
-            obj = jsonToObject(params);
-        } else {
-             obj = uriParamToObject(params);
-        }
-
-        if(obj != null){
-            objBox.put(obj);
-            response = new HttpResponse(StatusCode.OK, ContentType.JSON, gson.toJson("Succesfully added"));
-        }
-        return response;
-    }
-
-    public long getIdGeneric(String params) {
-        T obj = uriParamToObject(params);
-        long id = 0;
-
-        Method invokeMethod = null;
-        try {
-            invokeMethod = obj.getClass().getMethod("getId");
-            id = (long) invokeMethod.invoke(obj);
-        } catch (NoSuchMethodException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (InvocationTargetException e) {
-            e.printStackTrace();
-        }
-        return id;
-    }
-
     public Property getObjectBoxGeneratedClassProperty(String fieldName) {
         //Class<?> generatedClassInstance = null;
         Property<T> property = null;
@@ -158,16 +56,26 @@ public class GenericApiDao<T> {
         return property;
     }
 
-    public HttpResponse view(String params) {
-        String returnMsg = null;
-        if(isValidJson(params)){
 
+    public HttpResponse add(String params) {
+        T obj = util.generateObject(params);
+        String returnMsg = null;
+        HttpResponse response = new HttpResponse(StatusCode.ERROR, ContentType.JSON, gson.toJson("Failed to add user"));
+        if(obj != null){
+            objBox.put(obj);
+            response = new HttpResponse(StatusCode.OK, ContentType.JSON, gson.toJson("Succesfully added"));
         }
+        return response;
+    }
+
+     public HttpResponse view(String params) {
+        String returnMsg = null;
         if (params != null && params.length() != 0 && params.equalsIgnoreCase("all")) {
             List<T> objects = objBox.getAll();
             returnMsg = gson.toJson(objects);
         } else {
-            long id = getIdGeneric(params);
+
+            long id = util.getIdGeneric(params);
             Property<T> property = getObjectBoxGeneratedClassProperty("id");
             T objQ = null;
             objQ = objBox.query().equal(property, id).build().findFirst();
@@ -181,7 +89,7 @@ public class GenericApiDao<T> {
         long id = 0;
         String returnMsg;
 
-        id = getIdGeneric(params);
+        id = util.getIdGeneric(params);
         boolean removed = false;
         removed = objBox.remove(id);
         if (removed) {
@@ -199,13 +107,13 @@ public class GenericApiDao<T> {
         String returnMsg = null;
         HttpResponse response = null;
         boolean edited = false;
-        T obj = uriParamToObject(params);
+        T obj = util.uriParamToObject(params);
         T objFromDB = null;
 
-        id = getIdGeneric(params);
+        id = util.getIdGeneric(params);
 
         if (id != 0) {
-            id = getIdGeneric(params);
+            id = util.getIdGeneric(params);
             Property<T> property = getObjectBoxGeneratedClassProperty("id");
             objFromDB = objBox.query().equal(property, id).build().findFirst();
             objFromDB = obj;

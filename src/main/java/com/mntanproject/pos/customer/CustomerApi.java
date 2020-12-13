@@ -1,8 +1,8 @@
 package com.mntanproject.pos.customer;
 
-import com.mntanproject.pos.database.GenericApiDao;
+import com.mntanproject.pos.database.GenericApi;
 
-public class CustomerApi extends GenericApiDao<Customer> {
+public class CustomerApi extends GenericApi<Customer> {
 
 
     private static final Class<?> generatedCustomer = Customer_.class;
