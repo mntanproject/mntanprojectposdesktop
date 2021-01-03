@@ -25,8 +25,8 @@ public class MyObjectBox {
 
     public static BoxStoreBuilder builder() {
         BoxStoreBuilder builder = new BoxStoreBuilder(getModel());
-        builder.entity(Customer_.__INSTANCE);
         builder.entity(Supplier_.__INSTANCE);
+        builder.entity(Customer_.__INSTANCE);
         return builder;
     }
 
@@ -36,32 +36,10 @@ public class MyObjectBox {
         modelBuilder.lastIndexId(0, 0L);
         modelBuilder.lastRelationId(0, 0L);
 
-        buildEntityCustomer(modelBuilder);
         buildEntitySupplier(modelBuilder);
+        buildEntityCustomer(modelBuilder);
 
         return modelBuilder.build();
-    }
-
-    private static void buildEntityCustomer(ModelBuilder modelBuilder) {
-        EntityBuilder entityBuilder = modelBuilder.entity("Customer");
-        entityBuilder.id(2, 4422835441606432467L).lastPropertyId(11, 798660710016385113L);
-        entityBuilder.flags(io.objectbox.model.EntityFlags.USE_NO_ARG_CONSTRUCTOR);
-
-        entityBuilder.property("id", PropertyType.Long).id(1, 8970205849757570235L)
-                .flags(PropertyFlags.ID);
-        entityBuilder.property("name", PropertyType.String).id(2, 8842403407573568000L);
-        entityBuilder.property("company", PropertyType.String).id(3, 6093348282066508667L);
-        entityBuilder.property("contact", PropertyType.String).id(4, 7890842805819307857L);
-        entityBuilder.property("email", PropertyType.String).id(5, 2839622671515658098L);
-        entityBuilder.property("street", PropertyType.String).id(6, 3735685070254386709L);
-        entityBuilder.property("city", PropertyType.String).id(7, 7318695997709441567L);
-        entityBuilder.property("state", PropertyType.String).id(8, 6996923855463718789L);
-        entityBuilder.property("country", PropertyType.String).id(9, 7370267254249061484L);
-        entityBuilder.property("bank", PropertyType.String).id(10, 781322659069117860L);
-        entityBuilder.property("notes", PropertyType.String).id(11, 798660710016385113L);
-
-
-        entityBuilder.entityDone();
     }
 
     private static void buildEntitySupplier(ModelBuilder modelBuilder) {
@@ -81,6 +59,28 @@ public class MyObjectBox {
         entityBuilder.property("country", PropertyType.String).id(9, 8583347077330895747L);
         entityBuilder.property("bank", PropertyType.String).id(10, 288799869396900120L);
         entityBuilder.property("notes", PropertyType.String).id(11, 1748644272730123241L);
+
+
+        entityBuilder.entityDone();
+    }
+
+    private static void buildEntityCustomer(ModelBuilder modelBuilder) {
+        EntityBuilder entityBuilder = modelBuilder.entity("Customer");
+        entityBuilder.id(2, 4422835441606432467L).lastPropertyId(11, 798660710016385113L);
+        entityBuilder.flags(io.objectbox.model.EntityFlags.USE_NO_ARG_CONSTRUCTOR);
+
+        entityBuilder.property("id", PropertyType.Long).id(1, 8970205849757570235L)
+                .flags(PropertyFlags.ID);
+        entityBuilder.property("name", PropertyType.String).id(2, 8842403407573568000L);
+        entityBuilder.property("company", PropertyType.String).id(3, 6093348282066508667L);
+        entityBuilder.property("contact", PropertyType.String).id(4, 7890842805819307857L);
+        entityBuilder.property("email", PropertyType.String).id(5, 2839622671515658098L);
+        entityBuilder.property("street", PropertyType.String).id(6, 3735685070254386709L);
+        entityBuilder.property("city", PropertyType.String).id(7, 7318695997709441567L);
+        entityBuilder.property("state", PropertyType.String).id(8, 6996923855463718789L);
+        entityBuilder.property("country", PropertyType.String).id(9, 7370267254249061484L);
+        entityBuilder.property("bank", PropertyType.String).id(10, 781322659069117860L);
+        entityBuilder.property("notes", PropertyType.String).id(11, 798660710016385113L);
 
 
         entityBuilder.entityDone();

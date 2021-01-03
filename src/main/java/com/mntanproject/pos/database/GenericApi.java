@@ -68,13 +68,27 @@ public class GenericApi<T> {
         return response;
     }
 
+    public HttpResponse size(String params) {
+        String returnMsg = null;
+        HttpResponse response = new HttpResponse(StatusCode.ERROR, ContentType.JSON, returnMsg);;
+        if (params != null && params.length() != 0 && params.equalsIgnoreCase("all")) {
+            int size = objBox.getAll().size();
+            HashMap<String, Integer> sizeObj = new HashMap<String, Integer>();
+            sizeObj.put("totalsize",size);
+            returnMsg = gson.toJson(sizeObj);
+            response = new HttpResponse(StatusCode.OK, ContentType.JSON, returnMsg);
+        }
+        return response;
+    }
+
      public HttpResponse view(String params) {
         String returnMsg = null;
-        if (params != null && params.length() != 0 && params.equalsIgnoreCase("all")) {
+        if (params != null && params.length() != 0 && params.contains("all")) {
+            System.out.println("calllllllllllllllllllllll");
             List<T> objects = objBox.getAll();
             returnMsg = gson.toJson(objects);
         } else {
-
+            System.out.println("rrrrrrrrrrrrrrrrrr");
             long id = util.getIdGeneric(params);
             Property<T> property = getObjectBoxGeneratedClassProperty("id");
             T objQ = null;
@@ -84,7 +98,56 @@ public class GenericApi<T> {
         HttpResponse response = new HttpResponse(StatusCode.OK, ContentType.JSON, returnMsg);
         return response;
     }
+    public HttpResponse paginator(String params) {
+        String returnMsg = null;
+        HttpResponse response = new HttpResponse(StatusCode.ERROR, ContentType.JSON, returnMsg);;
+        long limitLong = 0,offsetLong = 0;
+        String orderBy , descending = null;
+        QueryBuilder<T> query = objBox.query();
 
+        if (params != null && params.length() != 0 ) {
+            String[] splits = params.split("&");
+            HashMap<String, String> mappedParam = new HashMap<String, String>();
+
+            for (String string : splits) {
+                String[] keyValue = null;
+                keyValue = string.split("=");
+                System.out.println("key size: " + keyValue.length);
+                if (keyValue.length >= 2) {
+                    mappedParam.put(keyValue[0], keyValue[1]);
+                }
+            }
+            if (mappedParam.containsKey("offset") && mappedParam.containsKey("limit")){
+                Property<T> property = getObjectBoxGeneratedClassProperty("id");
+
+
+                offsetLong = Long.parseLong(mappedParam.get("offset"));
+                limitLong = Long.parseLong(mappedParam.get("limit"));
+
+                if(mappedParam.containsKey("order")&&mappedParam.containsKey("descending")) {
+                    property = getObjectBoxGeneratedClassProperty(mappedParam.get("order"));
+                    descending = mappedParam.get("descending");
+                    if (descending != null && descending.equalsIgnoreCase("1")){
+                        query.order(property,QueryBuilder.DESCENDING);
+                    }
+
+                }else if (mappedParam.containsKey("order")){
+                    property = getObjectBoxGeneratedClassProperty(mappedParam.get("order"));
+                    query.order(property);
+                }else{
+                    query.order(property,QueryBuilder.DESCENDING);
+                }
+                System.out.println("query: +");
+                System.out.println("query: " + query.toString());
+                List<T> objects = query.build().find(offsetLong,limitLong);
+                returnMsg = gson.toJson(objects);
+                response = new HttpResponse(StatusCode.OK, ContentType.JSON, returnMsg);
+            }
+
+        }
+
+        return response;
+    }
     public HttpResponse delete(String params) {
         long id = 0;
         String returnMsg;
