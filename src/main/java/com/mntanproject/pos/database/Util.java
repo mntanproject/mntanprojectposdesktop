@@ -31,6 +31,7 @@ public class Util<T> {
 
     public T uriParamToObject(String param) {
 
+        System.out.println("param: " + param);
         T returnedObject = null;
         String[] splits = param.split("&");
         HashMap<String, String> mappedParam = new HashMap<String, String>();
@@ -47,7 +48,7 @@ public class Util<T> {
         if (!isEmptyObject(json)){
             returnedObject = gson.fromJson(json, type);
         }
-        System.out.println(json);
+        System.out.println("uriParamToObject:" + json);
 
 
 
@@ -66,13 +67,14 @@ public class Util<T> {
     }
     public boolean isValidJson(String params) {
         boolean valid = false;
+        System.out.println("checking is valid json");
         try {
             T obj = gson.fromJson(params, type);
             System.out.println("object: " + obj);
             System.out.println("json: " + objectToJson(obj));
             valid = true;
         } catch (Exception e) {
-            //e.printStackTrace();
+            e.printStackTrace();
             return false;
         }
         return valid;

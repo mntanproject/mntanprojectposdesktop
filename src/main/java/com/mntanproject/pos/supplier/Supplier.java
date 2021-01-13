@@ -13,7 +13,6 @@ public class Supplier {
 
     }
 
-
     public long getId() {
         return id;
     }

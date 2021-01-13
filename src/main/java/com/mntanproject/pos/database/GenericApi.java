@@ -78,6 +78,13 @@ public class GenericApi<T> {
             returnMsg = gson.toJson(sizeObj);
             response = new HttpResponse(StatusCode.OK, ContentType.JSON, returnMsg);
         }
+        if (params != null && params.length() != 0 && params.contains("search=")) {
+            int size = searchSize(params);
+            HashMap<String, Integer> sizeObj = new HashMap<String, Integer>();
+            sizeObj.put("totalsize",size);
+            returnMsg = gson.toJson(sizeObj);
+            response = new HttpResponse(StatusCode.OK, ContentType.JSON, returnMsg);
+        }
         return response;
     }
 
@@ -103,6 +110,12 @@ public class GenericApi<T> {
         HttpResponse response = new HttpResponse(StatusCode.ERROR, ContentType.JSON, returnMsg);;
         long limitLong = 0,offsetLong = 0;
         String orderBy , descending = null;
+        Property<T> propertyCompany = getObjectBoxGeneratedClassProperty("company");
+        Property<T> propertyName = getObjectBoxGeneratedClassProperty("name");
+        Property<T> propertyCountry = getObjectBoxGeneratedClassProperty("country");
+        Property<T> propertyCity = getObjectBoxGeneratedClassProperty("city");
+        Property<T> propertyState = getObjectBoxGeneratedClassProperty("state");
+
         QueryBuilder<T> query = objBox.query();
 
         if (params != null && params.length() != 0 ) {
@@ -117,12 +130,18 @@ public class GenericApi<T> {
                     mappedParam.put(keyValue[0], keyValue[1]);
                 }
             }
+            if (mappedParam.containsKey("search")) {
+                query.contains(propertyCompany, mappedParam.get("search"));
+                query.or().contains(propertyName, mappedParam.get("search"));
+                query.or().contains(propertyCountry, mappedParam.get("search"));
+                query.or().contains(propertyCity, mappedParam.get("search"));
+                query.or().contains(propertyState, mappedParam.get("search"));
+            }
             if (mappedParam.containsKey("offset") && mappedParam.containsKey("limit")){
                 Property<T> property = getObjectBoxGeneratedClassProperty("id");
-
-
                 offsetLong = Long.parseLong(mappedParam.get("offset"));
                 limitLong = Long.parseLong(mappedParam.get("limit"));
+
 
                 if(mappedParam.containsKey("order")&&mappedParam.containsKey("descending")) {
                     property = getObjectBoxGeneratedClassProperty(mappedParam.get("order"));
@@ -130,7 +149,6 @@ public class GenericApi<T> {
                     if (descending != null && descending.equalsIgnoreCase("1")){
                         query.order(property,QueryBuilder.DESCENDING);
                     }
-
                 }else if (mappedParam.containsKey("order")){
                     property = getObjectBoxGeneratedClassProperty(mappedParam.get("order"));
                     query.order(property);
@@ -143,7 +161,6 @@ public class GenericApi<T> {
                 returnMsg = gson.toJson(objects);
                 response = new HttpResponse(StatusCode.OK, ContentType.JSON, returnMsg);
             }
-
         }
 
         return response;
@@ -170,11 +187,13 @@ public class GenericApi<T> {
         String returnMsg = null;
         HttpResponse response = null;
         boolean edited = false;
-        T obj = util.uriParamToObject(params);
+        System.out.println("Edit params: " + params);
+        T obj = util.generateObject(params);
+        System.out.println("Edit: " + obj);
         T objFromDB = null;
 
         id = util.getIdGeneric(params);
-
+        System.out.println("Edit id: " + id);
         if (id != 0) {
             id = util.getIdGeneric(params);
             Property<T> property = getObjectBoxGeneratedClassProperty("id");
@@ -189,6 +208,27 @@ public class GenericApi<T> {
 
         return response;
     }
+
+    public int searchSize(String params) {
+        long id = 0;
+        int size = 0;
+
+        String searchTerm = null;
+        if (params != null && params.contains("search=")){
+            searchTerm = params.substring(params.lastIndexOf("=")+1);
+        }
+        Property<T> propertyCompany = getObjectBoxGeneratedClassProperty("company");
+        Property<T> propertyName = getObjectBoxGeneratedClassProperty("name");
+        QueryBuilder<T> query = objBox.query();
+        query.contains(propertyCompany,searchTerm);
+        query.or().contains(propertyName,searchTerm);
+        List<T> objects = query.build().find();
+        size = objects.size();
+        return size;
+    }
+
+
+
 
 
 }
