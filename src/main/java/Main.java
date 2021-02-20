@@ -1,4 +1,4 @@
-import com.mntanproject.pos.MyObjectBox;
+
 import com.mntanproject.pos.customer.Customer;
 import com.mntanproject.pos.database.ObjectBoxDB;
 import com.mntanproject.pos.supplier.Supplier;
@@ -14,6 +14,9 @@ public class Main {
         HashMap<String,String> routes = new HashMap<String,String>();
         routes.put("supplier","com.mntanproject.pos.supplier.SupplierApi");
         routes.put("customer","com.mntanproject.pos.customer.CustomerApi");
+        routes.put("purchase","com.mntanproject.pos.purchase.PurchaseApi");
+        
+
 
         server.getRegisteredRoute().setRegisteredRoutes(routes);
         server.startServer();

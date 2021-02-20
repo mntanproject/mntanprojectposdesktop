@@ -18,6 +18,7 @@ import java.util.List;
 public class GenericApi<T> {
 
 
+
     private Class<T> type;
     Box<T> objBox;
     QueryBuilder<T> builder;
@@ -28,13 +29,14 @@ public class GenericApi<T> {
     Util<T> util;
 
     public GenericApi(Class<?> generatedClass) {
+
         this.gson = new GsonBuilder().serializeNulls().create();
         this.type = (Class<T>) ((ParameterizedType) getClass()
                 .getGenericSuperclass()).getActualTypeArguments()[0];
         this.objBox = ObjectBoxDB.get().boxFor(type);
         this.generatedClass = generatedClass;
         this.util = new Util<T>(type);
-        System.out.println("Type: " + type);
+
         //System.exit(1);
     }
     public Property getObjectBoxGeneratedClassProperty(String fieldName) {
@@ -90,12 +92,11 @@ public class GenericApi<T> {
 
      public HttpResponse view(String params) {
         String returnMsg = null;
+
         if (params != null && params.length() != 0 && params.contains("all")) {
-            System.out.println("calllllllllllllllllllllll");
             List<T> objects = objBox.getAll();
             returnMsg = gson.toJson(objects);
         } else {
-            System.out.println("rrrrrrrrrrrrrrrrrr");
             long id = util.getIdGeneric(params);
             Property<T> property = getObjectBoxGeneratedClassProperty("id");
             T objQ = null;
@@ -187,13 +188,13 @@ public class GenericApi<T> {
         String returnMsg = null;
         HttpResponse response = null;
         boolean edited = false;
-        System.out.println("Edit params: " + params);
+        //System.out.println("Edit params: " + params);
         T obj = util.generateObject(params);
-        System.out.println("Edit: " + obj);
+        //System.out.println("Edit: " + obj);
         T objFromDB = null;
 
         id = util.getIdGeneric(params);
-        System.out.println("Edit id: " + id);
+        //System.out.println("Edit id: " + id);
         if (id != 0) {
             id = util.getIdGeneric(params);
             Property<T> property = getObjectBoxGeneratedClassProperty("id");

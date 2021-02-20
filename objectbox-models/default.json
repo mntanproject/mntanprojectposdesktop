@@ -130,17 +130,99 @@
         }
       ],
       "relations": []
+    },
+    {
+      "id": "3:6487074464526721229",
+      "lastPropertyId": "9:127811175525126847",
+      "name": "Item",
+      "properties": [
+        {
+          "id": "1:7396258954298446722",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "3:5347155490868712580",
+          "name": "name",
+          "type": 9
+        },
+        {
+          "id": "4:5102207560393996792",
+          "name": "barcode",
+          "type": 9
+        },
+        {
+          "id": "5:6396836435449993332",
+          "name": "notes",
+          "type": 9
+        },
+        {
+          "id": "6:6146078813915261805",
+          "name": "quantityOnHand",
+          "type": 7,
+          "flags": 4
+        },
+        {
+          "id": "7:970504366419686193",
+          "name": "purchasePrice",
+          "type": 7,
+          "flags": 4
+        },
+        {
+          "id": "8:23200698789652572",
+          "name": "sellingPrice",
+          "type": 7,
+          "flags": 4
+        },
+        {
+          "id": "9:127811175525126847",
+          "name": "purchaseId",
+          "indexId": "1:6059317526190767340",
+          "type": 11,
+          "flags": 1548,
+          "relationTarget": "Purchase"
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "4:8545195011975777214",
+      "lastPropertyId": "3:5188257565456674427",
+      "name": "Purchase",
+      "properties": [
+        {
+          "id": "1:392079243937945357",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:7454433681603809619",
+          "name": "total",
+          "type": 7,
+          "flags": 4
+        },
+        {
+          "id": "3:5188257565456674427",
+          "name": "createdOn",
+          "type": 10
+        }
+      ],
+      "relations": []
     }
   ],
-  "lastEntityId": "2:4422835441606432467",
-  "lastIndexId": "0:0",
+  "lastEntityId": "4:8545195011975777214",
+  "lastIndexId": "1:6059317526190767340",
   "lastRelationId": "0:0",
   "lastSequenceId": "0:0",
   "modelVersion": 5,
   "modelVersionParserMinimum": 5,
   "retiredEntityUids": [],
   "retiredIndexUids": [],
-  "retiredPropertyUids": [],
+  "retiredPropertyUids": [
+    2319123734786360076
+  ],
   "retiredRelationUids": [],
   "version": 1
 }

@@ -8,7 +8,6 @@ public class SupplierApi extends GenericApi<Supplier> {
 
     public SupplierApi() {
         super(generatedSupplier);
-        System.out.println("SupplierApi called");
     }
 
 }

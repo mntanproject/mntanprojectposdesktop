@@ -14,7 +14,6 @@ public class Util<T> {
     private Gson gson = new Gson();
 
     public Util(Class<T> type) {
-        System.out.println("Database util created" + type);
         this.type = type;
     }
 
@@ -31,7 +30,6 @@ public class Util<T> {
 
     public T uriParamToObject(String param) {
 
-        System.out.println("param: " + param);
         T returnedObject = null;
         String[] splits = param.split("&");
         HashMap<String, String> mappedParam = new HashMap<String, String>();
@@ -39,8 +37,7 @@ public class Util<T> {
         for (String string : splits) {
             String[] keyValue = null;
             keyValue = string.split("=");
-            System.out.println("key size: " + keyValue.length);
-            if (keyValue.length == 2) {
+           if (keyValue.length == 2) {
                 mappedParam.put(keyValue[0], keyValue[1]);
             }
         }
@@ -48,10 +45,6 @@ public class Util<T> {
         if (!isEmptyObject(json)){
             returnedObject = gson.fromJson(json, type);
         }
-        System.out.println("uriParamToObject:" + json);
-
-
-
         return returnedObject;
     }
     public boolean isEmptyObject(String json){
@@ -67,14 +60,12 @@ public class Util<T> {
     }
     public boolean isValidJson(String params) {
         boolean valid = false;
-        System.out.println("checking is valid json");
         try {
             T obj = gson.fromJson(params, type);
-            System.out.println("object: " + obj);
-            System.out.println("json: " + objectToJson(obj));
             valid = true;
         } catch (Exception e) {
-            e.printStackTrace();
+            //e.printStackTrace();
+            System.out.println("Exception: Not valid json using uri param instead");
             return false;
         }
         return valid;
@@ -87,11 +78,7 @@ public class Util<T> {
         try {
             invokeMethod = obj.getClass().getMethod("getId");
             id = (long) invokeMethod.invoke(obj);
-        } catch (NoSuchMethodException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (InvocationTargetException e) {
+        } catch (NoSuchMethodException  | InvocationTargetException | IllegalAccessException e) {
             e.printStackTrace();
         }
         return id;
@@ -100,7 +87,6 @@ public class Util<T> {
     public T generateObject(String params){
         T obj = null;
         if(isValidJson(params)){
-            System.out.println("generating object from json: " +params);
             obj = jsonToObject(params);
         } else {
             obj = uriParamToObject(params);
