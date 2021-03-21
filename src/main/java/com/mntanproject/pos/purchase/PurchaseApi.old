@@ -1,0 +1,213 @@
+package com.mntanproject.pos.purchase;
+
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.mntanproject.pos.database.GenericRelationApi;
+import com.mntanproject.pos.item.Item;
+import io.objectbox.Property;
+import io.objectbox.query.QueryBuilder;
+import mntanproject.core.server.response.ContentType;
+import mntanproject.core.server.response.HttpResponse;
+import mntanproject.core.server.response.StatusCode;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+
+public class PurchaseApi extends GenericRelationApi<Purchase> {
+    public PurchaseApi(Class<?> generatedClass) {
+        super(generatedClass);
+    }
+
+//    private static final Class<?> generatedPurchase = Purchase_.class;
+/*
+
+    public PurchaseApi() {
+        super(generatedPurchase);
+    }
+
+    @Override
+    public String toJson(Object obj) {
+        System.out.println("purchaseapi tojson");
+        PurchaseParser purchaseParser = new PurchaseParser((Purchase) obj);
+        return purchaseParser.toJson(true, true);
+
+    }
+
+    @Override
+    public Purchase fromJson(String json) {
+        Purchase purchase = new Purchase();
+        PurchaseParser purchaseParser = new PurchaseParser(purchase);
+        return purchaseParser.fromJson(json);
+    }
+
+    public void addOrder(QueryBuilder queryBuilder, HashMap<String, String> mappedParam) {
+        Property<Purchase> property = getObjectBoxGeneratedClassProperty("id");
+
+        if (mappedParam.containsKey("order") && mappedParam.get("order").equalsIgnoreCase("supplier")) {
+            queryBuilder.link(Purchase_.supplier).order(Supplier_.name);
+        } else {
+            if (mappedParam.containsKey("order") && mappedParam.containsKey("descending")) {
+                property = getObjectBoxGeneratedClassProperty(mappedParam.get("order"));
+                String descendingStr = mappedParam.get("descending");
+                if (descendingStr != null && descendingStr.equalsIgnoreCase("1")) {
+                    queryBuilder.order(property, QueryBuilder.DESCENDING);
+                } else {
+                    queryBuilder.order(property);
+                }
+            } else if (mappedParam.containsKey("order")) {
+                System.out.println("addOrder(), order:" + mappedParam.get("order"));
+                property = getObjectBoxGeneratedClassProperty(mappedParam.get("order"));
+                queryBuilder.order(property);
+            } else {
+                queryBuilder.order(property, QueryBuilder.DESCENDING);
+            }
+        }
+
+
+    }
+
+    public List<Purchase> executeQuery(QueryBuilder queryBuilder, HashMap<String, String> mappedParam) {
+        long limitLong = 0, offsetLong = 0;
+        List<Purchase> objects = null;
+        if (mappedParam.containsKey("offset") && mappedParam.containsKey("limit")) {
+            offsetLong = Long.parseLong(mappedParam.get("offset"));
+            limitLong = Long.parseLong(mappedParam.get("limit"));
+
+            objects = queryBuilder.build().find(offsetLong, limitLong);
+        }
+
+        return objects;
+    }
+
+    @Override
+    public HttpResponse paginator(String params) {
+        String returnMsg = null;
+        System.out.println("params: " + params);
+        HttpResponse response = new HttpResponse(StatusCode.ERROR, ContentType.JSON, returnMsg);
+        QueryBuilder<Purchase> query = objBox.query();
+        List<Purchase> objects = new ArrayList<>();
+
+        if (params != null && params.length() != 0) {
+            String[] splits = params.split("&");
+            HashMap<String, String> mappedParam = new HashMap<String, String>();
+            for (String string : splits) {
+                String[] keyValue = null;
+                keyValue = string.split("=");
+                System.out.println("key size: " + keyValue.length + "string:" + string);
+                if (keyValue.length >= 2) {
+                    mappedParam.put(keyValue[0], keyValue[1]);
+                }
+            }
+            for (String str : mappedParam.keySet()) {
+                System.out.println(str + " - " + mappedParam.get(str));
+            }
+            if (mappedParam.containsKey("order") && mappedParam.get("order") == "supplier") {
+
+            }
+            if (mappedParam.containsKey("search") && mappedParam.containsKey("tomany")) {
+                System.out.println("query add tomany");
+                query = objBox.query();
+                query.link(Purchase_.items).contains(Item_.name, mappedParam.get("search"))
+                        .or().contains(Item_.barcode, mappedParam.get("search"));
+                addOrder(query, mappedParam);
+                objects.addAll(executeQuery(query, mappedParam));
+            }
+
+            if (mappedParam.containsKey("search") && mappedParam.containsKey("toone")) {
+                System.out.println("query add toone");
+                query = objBox.query();
+
+                query.link(Purchase_.supplier).contains(Supplier_.name, mappedParam.get("search"))
+                        .or().contains(Supplier_.company, mappedParam.get("search"))
+                        .or().contains(Supplier_.city, mappedParam.get("search"))
+                        .or().contains(Supplier_.country, mappedParam.get("search"));
+                addOrder(query, mappedParam);
+                objects.addAll(executeQuery(query, mappedParam));
+            }
+            if (!mappedParam.containsKey("search")) {
+                query = objBox.query();
+                addOrder(query, mappedParam);
+                objects.addAll(executeQuery(query, mappedParam));
+            }
+
+            System.out.println("objects size: " + objects.size());
+//            if (mappedParam.containsKey("order") && mappedParam.get("order").equalsIgnoreCase("supplier")) {
+//                if (mappedParam.get("descending").equalsIgnoreCase("1")) {
+//                    Collections.sort(objects, new PurchaseComparator().reversed());
+//                } else {
+//                    Collections.sort(objects, new PurchaseComparator());
+//                }
+//            }
+            ArrayList<String> jsonArray = new ArrayList<>();
+            for (int i = 0; i < objects.size(); i++) {
+                jsonArray.add(toJson(objects.get(i)));
+            }
+            returnMsg = jsonArray.toString();
+            response = new HttpResponse(StatusCode.OK, ContentType.JSON, returnMsg);
+
+            // List<Purchase> elmosOnSesameStreet = builder.build().find();
+        }
+
+
+        System.out.println(query.toString());
+        System.out.println(response);
+        return response;
+
+    }
+
+
+    @Override
+    public int searchSize(String params) {
+        long id = 0;
+        int size = 0;
+
+        String searchTerm = null;
+        if (params != null && params.contains("search=")){
+            searchTerm = params.substring(params.lastIndexOf("=")+1);
+        }
+
+        QueryBuilder<Purchase> query = objBox.query();
+        query.link(Purchase_.supplier).contains(Supplier_.company,searchTerm)
+                .or().contains(Supplier_.name,searchTerm)
+                .or().contains(Supplier_.country, searchTerm)
+                .or().contains(Supplier_.city,searchTerm)
+                .or().contains(Supplier_.state, searchTerm);
+
+        List<Purchase> objects = query.build().find();
+        size = objects.size();
+        System.out.println("searchSize: "+ size);
+        return size;
+    }
+
+    @Override
+    public HttpResponse edit(String params) {
+        long id = 0;
+        String returnMsg = null;
+        HttpResponse response = null;
+        boolean edited = false;
+        System.out.println("Edit params: " + params);
+        Purchase obj = fromJson(params);
+        System.out.println("Edit: " + obj);
+        Purchase objFromDB = null;
+
+        id = obj.id;
+        System.out.println("Edit id: " + id);
+        if (id != 0) {
+            objFromDB = objBox.query().equal(Purchase_.id, id).build().findFirst();
+            objFromDB = obj;
+            objBox.put(objFromDB);
+            returnMsg = toJson(objFromDB);
+        }
+
+
+        response = new HttpResponse(StatusCode.OK, ContentType.JSON, returnMsg);
+
+        return response;
+    }
+*/
+
+}

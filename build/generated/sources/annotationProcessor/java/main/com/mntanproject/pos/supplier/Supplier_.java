@@ -18,7 +18,7 @@ public final class Supplier_ implements EntityInfo<Supplier> {
 
     public static final String __ENTITY_NAME = "Supplier";
 
-    public static final int __ENTITY_ID = 1;
+    public static final int __ENTITY_ID = 4;
 
     public static final Class<Supplier> __ENTITY_CLASS = Supplier.class;
 

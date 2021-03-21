@@ -27,15 +27,15 @@ public class ItemParser {
         jsonObject.put("sellingPrice",item.sellingPrice);
 
         if (parseToOne){
-            Purchase itemPurchase = null;
-            HashMap jsonObjectPurchase = new HashMap();
-            itemPurchase = item.purchase.getTarget();
-
-            jsonObjectPurchase.put("id",itemPurchase.id);
-            jsonObjectPurchase.put("total",itemPurchase.total);
-            jsonObjectPurchase.put("createdOn",itemPurchase.createdOn.toString());
-
-            jsonObject.put("purchase",jsonObjectPurchase);
+//            Purchase itemPurchase = null;
+//            HashMap jsonObjectPurchase = new HashMap();
+//            itemPurchase = item.purchase.getTarget();
+//
+//            jsonObjectPurchase.put("id",itemPurchase.id);
+//            jsonObjectPurchase.put("total",itemPurchase.total);
+//            jsonObjectPurchase.put("createdOn",itemPurchase.createdOn.toString());
+//
+//            jsonObject.put("purchase",jsonObjectPurchase);
         }
 
 

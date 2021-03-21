@@ -15,6 +15,8 @@ public class Item {
     public String name,barcode,notes;
     public float quantityOnHand,purchasePrice,sellingPrice;
 
+
+
     public Item(){}
     public Item(String name, String barcode, String notes, float quantityOnHand, float purchasePrice, float sellingPrice) {
         this.name = name;
@@ -25,7 +27,7 @@ public class Item {
         this.sellingPrice = sellingPrice;
     }
 
-    public ToOne<Purchase> purchase;
+
 
     public long getId() {
         return id;
@@ -83,11 +85,4 @@ public class Item {
         this.sellingPrice = sellingPrice;
     }
 
-    public ToOne<Purchase> getPurchase() {
-        return purchase;
-    }
-
-    public void setPurchase(ToOne<Purchase> purchase) {
-        this.purchase = purchase;
-    }
 }

@@ -1,0 +1,11 @@
+package com.mntanproject.pos.purchase;
+
+import java.util.Comparator;
+
+public class PurchaseComparator implements Comparator<Purchase> {
+
+    @Override
+    public int compare(Purchase o1, Purchase o2) {
+        return o1.getSupplier().name.compareTo(o2.getSupplier().name);
+    }
+}

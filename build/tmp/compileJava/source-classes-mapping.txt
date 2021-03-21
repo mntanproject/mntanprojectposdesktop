@@ -8,18 +8,14 @@ com/mntanproject/pos/database/Util.java
  com.mntanproject.pos.database.Util
 com/mntanproject/pos/purchase/PurchaseParser.java
  com.mntanproject.pos.purchase.PurchaseParser
-com/mntanproject/pos/item/ToManySerializer.java
- com.mntanproject.pos.item.ToManySerializer
-com/mntanproject/pos/item/ItemSerializer.java
- com.mntanproject.pos.item.ItemSerializer
 com/mntanproject/pos/database/GenericRelationApi.java
  com.mntanproject.pos.database.GenericRelationApi
-com/mntanproject/pos/item/ToOneSerializer.java
- com.mntanproject.pos.item.ToOneSerializer
 com/mntanproject/pos/purchase/Purchase.java
  com.mntanproject.pos.purchase.Purchase
-com/mntanproject/pos/purchase/PurchaseApi.java
- com.mntanproject.pos.purchase.PurchaseApi
+com/mntanproject/pos/item/Item.java
+ com.mntanproject.pos.item.Item
+com/mntanproject/pos/purchase/PurchaseItemApi.java
+ com.mntanproject.pos.purchase.PurchaseItemApi
 com/mntanproject/pos/supplier/Supplier.java
  com.mntanproject.pos.supplier.Supplier
 Main.java
@@ -30,15 +26,15 @@ com/mntanproject/pos/item/ItemApi.java
  com.mntanproject.pos.item.ItemApi
 com/mntanproject/pos/item/ItemParser.java
  com.mntanproject.pos.item.ItemParser
+com/mntanproject/pos/purchase/PurchaseItem.java
+ com.mntanproject.pos.purchase.PurchaseItem
 com/mntanproject/pos/database/GenericApi.java
  com.mntanproject.pos.database.GenericApi
 com/mntanproject/pos/customer/Customer.java
  com.mntanproject.pos.customer.Customer
 com/mntanproject/pos/database/ObjectBoxDB.java
  com.mntanproject.pos.database.ObjectBoxDB
-com/mntanproject/pos/purchase/TestPurchase.java
- com.mntanproject.pos.purchase.TestPurchase
 com/mntanproject/pos/customer/CustomerApi.java
  com.mntanproject.pos.customer.CustomerApi
-com/mntanproject/pos/item/Item.java
- com.mntanproject.pos.item.Item
+com/mntanproject/pos/purchase/PurchaseApi.java
+ com.mntanproject.pos.purchase.PurchaseApi

@@ -64,7 +64,7 @@ public class Util<T> {
             T obj = gson.fromJson(params, type);
             valid = true;
         } catch (Exception e) {
-            //e.printStackTrace();
+            e.printStackTrace();
             System.out.println("Exception: Not valid json using uri param instead");
             return false;
         }
@@ -86,6 +86,7 @@ public class Util<T> {
 
     public T generateObject(String params){
         T obj = null;
+        System.out.println("params: " + params);
         if(isValidJson(params)){
             obj = jsonToObject(params);
         } else {

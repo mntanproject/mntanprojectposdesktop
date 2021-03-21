@@ -18,7 +18,7 @@ public final class Customer_ implements EntityInfo<Customer> {
 
     public static final String __ENTITY_NAME = "Customer";
 
-    public static final int __ENTITY_ID = 2;
+    public static final int __ENTITY_ID = 1;
 
     public static final Class<Customer> __ENTITY_CLASS = Customer.class;
 

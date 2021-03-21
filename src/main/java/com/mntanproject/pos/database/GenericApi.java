@@ -20,13 +20,13 @@ public class GenericApi<T> {
 
 
     private Class<T> type;
-    Box<T> objBox;
+    public Box<T> objBox;
     QueryBuilder<T> builder;
     Query<T> query;
-    Gson gson;
+    public Gson gson;
     Property<T> property;
     Class<?> generatedClass;
-    Util<T> util;
+    public Util<T> util;
 
     public GenericApi(Class<?> generatedClass) {
 
@@ -62,15 +62,18 @@ public class GenericApi<T> {
     public HttpResponse add(String params) {
         T obj = util.generateObject(params);
         String returnMsg = null;
+
         HttpResponse response = new HttpResponse(StatusCode.ERROR, ContentType.JSON, gson.toJson("Failed to add user"));
         if(obj != null){
-            objBox.put(obj);
-            response = new HttpResponse(StatusCode.OK, ContentType.JSON, gson.toJson("Succesfully added"));
+            long id = objBox.put(obj);
+            response = new HttpResponse(StatusCode.OK, ContentType.JSON, gson.toJson("id:" + id+ ",msg:Succesfully added"));
         }
+        System.out.println("add response: " + response);
         return response;
     }
 
     public HttpResponse size(String params) {
+        System.out.println("size called");
         String returnMsg = null;
         HttpResponse response = new HttpResponse(StatusCode.ERROR, ContentType.JSON, returnMsg);;
         if (params != null && params.length() != 0 && params.equalsIgnoreCase("all")) {
@@ -108,6 +111,7 @@ public class GenericApi<T> {
     }
     public HttpResponse paginator(String params) {
         String returnMsg = null;
+        System.out.println("params: " + params);
         HttpResponse response = new HttpResponse(StatusCode.ERROR, ContentType.JSON, returnMsg);;
         long limitLong = 0,offsetLong = 0;
         String orderBy , descending = null;
@@ -126,10 +130,13 @@ public class GenericApi<T> {
             for (String string : splits) {
                 String[] keyValue = null;
                 keyValue = string.split("=");
-                System.out.println("key size: " + keyValue.length);
+                System.out.println("key size: " + keyValue.length + "string:"+string);
                 if (keyValue.length >= 2) {
                     mappedParam.put(keyValue[0], keyValue[1]);
                 }
+            }
+            for (String str : mappedParam.keySet()){
+                System.out.println(str);
             }
             if (mappedParam.containsKey("search")) {
                 query.contains(propertyCompany, mappedParam.get("search"));
@@ -143,12 +150,13 @@ public class GenericApi<T> {
                 offsetLong = Long.parseLong(mappedParam.get("offset"));
                 limitLong = Long.parseLong(mappedParam.get("limit"));
 
-
                 if(mappedParam.containsKey("order")&&mappedParam.containsKey("descending")) {
                     property = getObjectBoxGeneratedClassProperty(mappedParam.get("order"));
                     descending = mappedParam.get("descending");
                     if (descending != null && descending.equalsIgnoreCase("1")){
                         query.order(property,QueryBuilder.DESCENDING);
+                    } else {
+                        query.order(property);
                     }
                 }else if (mappedParam.containsKey("order")){
                     property = getObjectBoxGeneratedClassProperty(mappedParam.get("order"));
@@ -156,13 +164,13 @@ public class GenericApi<T> {
                 }else{
                     query.order(property,QueryBuilder.DESCENDING);
                 }
-                System.out.println("query: +");
-                System.out.println("query: " + query.toString());
-                List<T> objects = query.build().find(offsetLong,limitLong);
+                 List<T> objects = query.build().find(offsetLong,limitLong);
+                System.out.println("objects size: " + objects.size());
                 returnMsg = gson.toJson(objects);
                 response = new HttpResponse(StatusCode.OK, ContentType.JSON, returnMsg);
             }
         }
+        System.out.println("response:"+response);
 
         return response;
     }
@@ -220,9 +228,17 @@ public class GenericApi<T> {
         }
         Property<T> propertyCompany = getObjectBoxGeneratedClassProperty("company");
         Property<T> propertyName = getObjectBoxGeneratedClassProperty("name");
+        Property<T> propertyCountry = getObjectBoxGeneratedClassProperty("country");
+        Property<T> propertyCity = getObjectBoxGeneratedClassProperty("city");
+        Property<T> propertyState = getObjectBoxGeneratedClassProperty("state");
+
         QueryBuilder<T> query = objBox.query();
         query.contains(propertyCompany,searchTerm);
         query.or().contains(propertyName,searchTerm);
+        query.or().contains(propertyCountry, searchTerm);
+        query.or().contains(propertyCity,searchTerm);
+        query.or().contains(propertyState, searchTerm);
+
         List<T> objects = query.build().find();
         size = objects.size();
         return size;

@@ -12,7 +12,7 @@ public class TestItem {
         ObjectBoxDB.init();
 
         GsonBuilder gsonBuilder = new GsonBuilder();
-        gsonBuilder.registerTypeAdapter(ToOne.class, new ToOneSerializer<Purchase>());
+        //gsonBuilder.registerTypeAdapter(ToOne.class, new ToOneSerializer<Purchase>());
         Gson gson = gsonBuilder.create();
 
         Item item1 = new Item("obeng","1234567","note",122,1000,15000);

@@ -3,12 +3,15 @@ package com.mntanproject.pos.database;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 
+import com.sun.net.httpserver.HttpPrincipal;
 import io.objectbox.Property;
+import io.objectbox.query.QueryBuilder;
 import mntanproject.core.server.response.ContentType;
 import mntanproject.core.server.response.HttpResponse;
 import mntanproject.core.server.response.StatusCode;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class GenericRelationApi<T> extends GenericApi<T> {
@@ -20,27 +23,26 @@ public class GenericRelationApi<T> extends GenericApi<T> {
         this.generatedClass = generatedClass;
     }
 
+    public T fromJson(String json){
+        return null;
+    }
     public String toJson(Object obj) {
-//
-//        HttpResponse response = new HttpResponse(StatusCode.ERROR, ContentType.JSON,
-//                gson.toJson("Please implement this method"));
-//
-//        switch (option){
-//            case "ToOne":
-//                System.out.println("ToOne");
-//                break;
-//            case "ToMany":
-//                System.out.println("ToMany");
-//                break;
-//            default:
-//                System.out.println("DEfault");
-//        }
         return null;
     }
 
     @Override
+    public  HttpResponse add(String params){
+        HttpResponse response = new HttpResponse(StatusCode.ERROR, ContentType.JSON, null);
+        System.out.println("params: " + params);
+        T obj = fromJson(params);
+        if(obj != null){
+            objBox.put(obj);
+            response = new HttpResponse(StatusCode.OK, ContentType.JSON, gson.toJson("Succesfully added"));
+        }
+        return response;
+    }
+    @Override
     public HttpResponse view(String params) {
-
         HttpResponse response = new HttpResponse(StatusCode.ERROR, ContentType.JSON, null);
         String returnMsg = null;
         ArrayList<String> jsonArray = new ArrayList<>();
@@ -70,16 +72,7 @@ public class GenericRelationApi<T> extends GenericApi<T> {
         return response;
     }
 
-    //    public void add2(String params) {
-//        A obj = util.generateObject(params);
-//        String returnMsg = null;
-//        HttpResponse response = new HttpResponse(StatusCode.ERROR, ContentType.JSON, gson.toJson("Failed to add user"));
-//        if(obj != null){
-//            //objBox.put(obj);
-//            response = new HttpResponse(StatusCode.OK, ContentType.JSON, gson.toJson("Succesfully added"));
-//        }
-//        System.out.println(obj);
-//    }
+
 
 
 }

@@ -1,10 +1,7 @@
 package com.mntanproject.pos.purchase;
 
-import com.mntanproject.pos.item.Item;
-import io.objectbox.annotation.Backlink;
 import io.objectbox.annotation.Entity;
 import io.objectbox.annotation.Id;
-import io.objectbox.relation.ToMany;
 import java.util.Date;
 
 @Entity
@@ -14,10 +11,11 @@ public class Purchase {
 public long id;
 public float total;
 public Date createdOn;
+public Date lastEditedOn;
+public long supplierId;
 
-@Backlink
-public ToMany<Item> items;
-
+    public Purchase() {
+    }
 
     public long getId() {
         return id;
@@ -43,21 +41,11 @@ public ToMany<Item> items;
         this.createdOn = createdOn;
     }
 
-    public ToMany<Item> getItems() {
-        return items;
+    public Date getLastEditedOn() {
+        return lastEditedOn;
     }
 
-    public void setItems(ToMany<Item> items) {
-        this.items = items;
-    }
-
-    @Override
-    public String toString() {
-        return "Purchase{" +
-                "id=" + id +
-                ", total=" + total +
-                ", createdOn=" + createdOn +
-                ", items=" + items +
-                '}';
+    public void setLastEditedOn(Date lastEditedOn) {
+        this.lastEditedOn = lastEditedOn;
     }
 }

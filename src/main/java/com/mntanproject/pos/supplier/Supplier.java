@@ -13,6 +13,19 @@ public class Supplier {
 
     }
 
+    public Supplier( String company, String name, String contactno, String email, String street, String city, String state, String country, String bank, String notes) {
+        this.company = company;
+        this.name = name;
+        this.contactno = contactno;
+        this.email = email;
+        this.street = street;
+        this.city = city;
+        this.state = state;
+        this.country = country;
+        this.bank = bank;
+        this.notes = notes;
+    }
+
     public long getId() {
         return id;
     }
@@ -99,5 +112,22 @@ public class Supplier {
 
     public void setNotes(String notes) {
         this.notes = notes;
+    }
+
+    @Override
+    public String toString() {
+        return "Supplier{" +
+                "id=" + id +
+                ", company='" + company + '\'' +
+                ", name='" + name + '\'' +
+                ", contactno='" + contactno + '\'' +
+                ", email='" + email + '\'' +
+                ", street='" + street + '\'' +
+                ", city='" + city + '\'' +
+                ", state='" + state + '\'' +
+                ", country='" + country + '\'' +
+                ", bank='" + bank + '\'' +
+                ", notes='" + notes + '\'' +
+                '}';
     }
 }
