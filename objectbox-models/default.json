@@ -116,7 +116,7 @@
     },
     {
       "id": "3:8050912771388907097",
-      "lastPropertyId": "5:7321988419142898435",
+      "lastPropertyId": "6:4771216246225703307",
       "name": "Purchase",
       "properties": [
         {
@@ -146,6 +146,11 @@
           "id": "5:7321988419142898435",
           "name": "lastEditedOn",
           "type": 10
+        },
+        {
+          "id": "6:4771216246225703307",
+          "name": "items",
+          "type": 9
         }
       ],
       "relations": []

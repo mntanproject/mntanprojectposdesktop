@@ -140,7 +140,7 @@ public class MyObjectBox {
 
     private static void buildEntityPurchase(ModelBuilder modelBuilder) {
         EntityBuilder entityBuilder = modelBuilder.entity("Purchase");
-        entityBuilder.id(3, 8050912771388907097L).lastPropertyId(5, 7321988419142898435L);
+        entityBuilder.id(3, 8050912771388907097L).lastPropertyId(6, 4771216246225703307L);
         entityBuilder.flags(io.objectbox.model.EntityFlags.USE_NO_ARG_CONSTRUCTOR);
 
         entityBuilder.property("id", PropertyType.Long).id(1, 7861542812595423630L)
@@ -151,6 +151,7 @@ public class MyObjectBox {
         entityBuilder.property("lastEditedOn", PropertyType.Date).id(5, 7321988419142898435L);
         entityBuilder.property("supplierId", PropertyType.Long).id(4, 4517040027228705031L)
                 .flags(PropertyFlags.NOT_NULL);
+        entityBuilder.property("items", PropertyType.String).id(6, 4771216246225703307L);
 
 
         entityBuilder.entityDone();

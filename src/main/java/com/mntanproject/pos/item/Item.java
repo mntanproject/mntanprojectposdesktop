@@ -85,4 +85,16 @@ public class Item {
         this.sellingPrice = sellingPrice;
     }
 
+    @Override
+    public String toString() {
+        return "Item{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", barcode='" + barcode + '\'' +
+                ", notes='" + notes + '\'' +
+                ", quantityOnHand=" + quantityOnHand +
+                ", purchasePrice=" + purchasePrice +
+                ", sellingPrice=" + sellingPrice +
+                '}';
+    }
 }

@@ -6,14 +6,14 @@ com/mntanproject/pos/FaviconApi.java
  com.mntanproject.pos.FaviconApi
 com/mntanproject/pos/database/Util.java
  com.mntanproject.pos.database.Util
-com/mntanproject/pos/purchase/PurchaseParser.java
- com.mntanproject.pos.purchase.PurchaseParser
+com/mntanproject/pos/database/ObjectBoxDB.java
+ com.mntanproject.pos.database.ObjectBoxDB
 com/mntanproject/pos/database/GenericRelationApi.java
  com.mntanproject.pos.database.GenericRelationApi
-com/mntanproject/pos/purchase/Purchase.java
- com.mntanproject.pos.purchase.Purchase
 com/mntanproject/pos/item/Item.java
  com.mntanproject.pos.item.Item
+com/mntanproject/pos/customer/CustomerApi.java
+ com.mntanproject.pos.customer.CustomerApi
 com/mntanproject/pos/purchase/PurchaseItemApi.java
  com.mntanproject.pos.purchase.PurchaseItemApi
 com/mntanproject/pos/supplier/Supplier.java
@@ -32,9 +32,13 @@ com/mntanproject/pos/database/GenericApi.java
  com.mntanproject.pos.database.GenericApi
 com/mntanproject/pos/customer/Customer.java
  com.mntanproject.pos.customer.Customer
-com/mntanproject/pos/database/ObjectBoxDB.java
- com.mntanproject.pos.database.ObjectBoxDB
-com/mntanproject/pos/customer/CustomerApi.java
- com.mntanproject.pos.customer.CustomerApi
+com/mntanproject/pos/purchase/Purchase.java
+ com.mntanproject.pos.purchase.Purchase
+ com.mntanproject.pos.purchase.Purchase$PurchaseCustomConverter
+ com.mntanproject.pos.purchase.Purchase$PurchaseCustomConverter$1
+com/mntanproject/pos/purchase/TestPurchase.java
+ com.mntanproject.pos.purchase.TestPurchase
+com/mntanproject/pos/purchase/PurchaseParser.java
+ com.mntanproject.pos.purchase.PurchaseParser
 com/mntanproject/pos/purchase/PurchaseApi.java
  com.mntanproject.pos.purchase.PurchaseApi
