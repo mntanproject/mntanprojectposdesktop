@@ -51,6 +51,9 @@ public final class Purchase_ implements EntityInfo<Purchase> {
     public final static io.objectbox.Property<Purchase> items =
         new io.objectbox.Property<>(__INSTANCE, 5, 6, String.class, "items", false, "items", PurchaseCustomConverter.class, ArrayList.class);
 
+    public final static io.objectbox.Property<Purchase> deleted =
+        new io.objectbox.Property<>(__INSTANCE, 6, 7, boolean.class, "deleted");
+
     @SuppressWarnings("unchecked")
     public final static io.objectbox.Property<Purchase>[] __ALL_PROPERTIES = new io.objectbox.Property[]{
         id,
@@ -58,7 +61,8 @@ public final class Purchase_ implements EntityInfo<Purchase> {
         createdOn,
         lastEditedOn,
         supplierId,
-        items
+        items,
+        deleted
     };
 
     public final static io.objectbox.Property<Purchase> __ID_PROPERTY = id;

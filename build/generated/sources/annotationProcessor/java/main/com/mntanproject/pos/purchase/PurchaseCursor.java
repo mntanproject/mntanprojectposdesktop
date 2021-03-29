@@ -31,6 +31,7 @@ public final class PurchaseCursor extends Cursor<Purchase> {
     private final static int __ID_lastEditedOn = Purchase_.lastEditedOn.id;
     private final static int __ID_supplierId = Purchase_.supplierId.id;
     private final static int __ID_items = Purchase_.items.id;
+    private final static int __ID_deleted = Purchase_.deleted.id;
 
     public PurchaseCursor(io.objectbox.Transaction tx, long cursor, BoxStore boxStore) {
         super(tx, cursor, Purchase_.__INSTANCE, boxStore);
@@ -59,7 +60,7 @@ public final class PurchaseCursor extends Cursor<Purchase> {
                 __id5, __id5 != 0 ? itemsConverter.convertToDatabaseValue(items) : null, 0, null,
                 0, null, 0, null,
                 __ID_supplierId, entity.supplierId, __id2, __id2 != 0 ? createdOn.getTime() : 0,
-                __id3, __id3 != 0 ? lastEditedOn.getTime() : 0, 0, 0,
+                __id3, __id3 != 0 ? lastEditedOn.getTime() : 0, __ID_deleted, entity.deleted ? 1 : 0,
                 0, 0, 0, 0,
                 __ID_total, entity.total, 0, 0);
 

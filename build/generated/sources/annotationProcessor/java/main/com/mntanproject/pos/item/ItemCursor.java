@@ -29,6 +29,8 @@ public final class ItemCursor extends Cursor<Item> {
     private final static int __ID_quantityOnHand = Item_.quantityOnHand.id;
     private final static int __ID_purchasePrice = Item_.purchasePrice.id;
     private final static int __ID_sellingPrice = Item_.sellingPrice.id;
+    private final static int __ID_deleted = Item_.deleted.id;
+    private final static int __ID_salesHappened = Item_.salesHappened.id;
 
     public ItemCursor(io.objectbox.Transaction tx, long cursor, BoxStore boxStore) {
         super(tx, cursor, Item_.__INSTANCE, boxStore);
@@ -56,7 +58,7 @@ public final class ItemCursor extends Cursor<Item> {
         collect313311(cursor, 0, PUT_FLAG_FIRST,
                 __id1, name, __id2, barcode,
                 __id3, notes, 0, null,
-                0, 0, 0, 0,
+                __ID_deleted, entity.deleted ? 1 : 0, __ID_salesHappened, entity.salesHappened ? 1 : 0,
                 0, 0, 0, 0,
                 0, 0, 0, 0,
                 __ID_quantityOnHand, entity.quantityOnHand, 0, 0);

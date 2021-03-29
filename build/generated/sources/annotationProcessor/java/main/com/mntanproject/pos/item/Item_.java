@@ -52,6 +52,12 @@ public final class Item_ implements EntityInfo<Item> {
     public final static io.objectbox.Property<Item> sellingPrice =
         new io.objectbox.Property<>(__INSTANCE, 6, 7, float.class, "sellingPrice");
 
+    public final static io.objectbox.Property<Item> deleted =
+        new io.objectbox.Property<>(__INSTANCE, 7, 8, boolean.class, "deleted");
+
+    public final static io.objectbox.Property<Item> salesHappened =
+        new io.objectbox.Property<>(__INSTANCE, 8, 9, boolean.class, "salesHappened");
+
     @SuppressWarnings("unchecked")
     public final static io.objectbox.Property<Item>[] __ALL_PROPERTIES = new io.objectbox.Property[]{
         id,
@@ -60,7 +66,9 @@ public final class Item_ implements EntityInfo<Item> {
         notes,
         quantityOnHand,
         purchasePrice,
-        sellingPrice
+        sellingPrice,
+        deleted,
+        salesHappened
     };
 
     public final static io.objectbox.Property<Item> __ID_PROPERTY = id;

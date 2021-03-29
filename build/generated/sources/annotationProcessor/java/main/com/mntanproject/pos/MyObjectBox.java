@@ -13,6 +13,9 @@ import com.mntanproject.pos.purchase.PurchaseItem;
 import com.mntanproject.pos.purchase.PurchaseItemCursor;
 import com.mntanproject.pos.purchase.PurchaseItem_;
 import com.mntanproject.pos.purchase.Purchase_;
+import com.mntanproject.pos.sales.Sales;
+import com.mntanproject.pos.sales.SalesCursor;
+import com.mntanproject.pos.sales.Sales_;
 import com.mntanproject.pos.supplier.Supplier;
 import com.mntanproject.pos.supplier.SupplierCursor;
 import com.mntanproject.pos.supplier.Supplier_;
@@ -39,12 +42,13 @@ public class MyObjectBox {
         builder.entity(Supplier_.__INSTANCE);
         builder.entity(Customer_.__INSTANCE);
         builder.entity(Purchase_.__INSTANCE);
+        builder.entity(Sales_.__INSTANCE);
         return builder;
     }
 
     private static byte[] getModel() {
         ModelBuilder modelBuilder = new ModelBuilder();
-        modelBuilder.lastEntityId(5, 8925388192994975963L);
+        modelBuilder.lastEntityId(6, 5506063489304133269L);
         modelBuilder.lastIndexId(0, 0L);
         modelBuilder.lastRelationId(0, 0L);
 
@@ -53,13 +57,14 @@ public class MyObjectBox {
         buildEntitySupplier(modelBuilder);
         buildEntityCustomer(modelBuilder);
         buildEntityPurchase(modelBuilder);
+        buildEntitySales(modelBuilder);
 
         return modelBuilder.build();
     }
 
     private static void buildEntityItem(ModelBuilder modelBuilder) {
         EntityBuilder entityBuilder = modelBuilder.entity("Item");
-        entityBuilder.id(2, 2087493086560667813L).lastPropertyId(7, 8271214205323964194L);
+        entityBuilder.id(2, 2087493086560667813L).lastPropertyId(9, 8643776922704200368L);
         entityBuilder.flags(io.objectbox.model.EntityFlags.USE_NO_ARG_CONSTRUCTOR);
 
         entityBuilder.property("id", PropertyType.Long).id(1, 2552309908272431130L)
@@ -72,6 +77,10 @@ public class MyObjectBox {
         entityBuilder.property("purchasePrice", PropertyType.Float).id(6, 5384243491203163328L)
                 .flags(PropertyFlags.NOT_NULL);
         entityBuilder.property("sellingPrice", PropertyType.Float).id(7, 8271214205323964194L)
+                .flags(PropertyFlags.NOT_NULL);
+        entityBuilder.property("deleted", PropertyType.Bool).id(8, 1921432704669942229L)
+                .flags(PropertyFlags.NOT_NULL);
+        entityBuilder.property("salesHappened", PropertyType.Bool).id(9, 8643776922704200368L)
                 .flags(PropertyFlags.NOT_NULL);
 
 
@@ -140,7 +149,7 @@ public class MyObjectBox {
 
     private static void buildEntityPurchase(ModelBuilder modelBuilder) {
         EntityBuilder entityBuilder = modelBuilder.entity("Purchase");
-        entityBuilder.id(3, 8050912771388907097L).lastPropertyId(6, 4771216246225703307L);
+        entityBuilder.id(3, 8050912771388907097L).lastPropertyId(7, 7188843611093211144L);
         entityBuilder.flags(io.objectbox.model.EntityFlags.USE_NO_ARG_CONSTRUCTOR);
 
         entityBuilder.property("id", PropertyType.Long).id(1, 7861542812595423630L)
@@ -152,6 +161,27 @@ public class MyObjectBox {
         entityBuilder.property("supplierId", PropertyType.Long).id(4, 4517040027228705031L)
                 .flags(PropertyFlags.NOT_NULL);
         entityBuilder.property("items", PropertyType.String).id(6, 4771216246225703307L);
+        entityBuilder.property("deleted", PropertyType.Bool).id(7, 7188843611093211144L)
+                .flags(PropertyFlags.NOT_NULL);
+
+
+        entityBuilder.entityDone();
+    }
+
+    private static void buildEntitySales(ModelBuilder modelBuilder) {
+        EntityBuilder entityBuilder = modelBuilder.entity("Sales");
+        entityBuilder.id(6, 5506063489304133269L).lastPropertyId(6, 9001945010635009182L);
+        entityBuilder.flags(io.objectbox.model.EntityFlags.USE_NO_ARG_CONSTRUCTOR);
+
+        entityBuilder.property("id", PropertyType.Long).id(1, 8047003261612331473L)
+                .flags(PropertyFlags.ID);
+        entityBuilder.property("customerId", PropertyType.Long).id(2, 1350033790222617973L)
+                .flags(PropertyFlags.NOT_NULL);
+        entityBuilder.property("total", PropertyType.Float).id(3, 7327978011833212040L)
+                .flags(PropertyFlags.NOT_NULL);
+        entityBuilder.property("date", PropertyType.Date).id(4, 2217543816329389985L);
+        entityBuilder.property("lastModified", PropertyType.Date).id(5, 861120916897041349L);
+        entityBuilder.property("items", PropertyType.String).id(6, 9001945010635009182L);
 
 
         entityBuilder.entityDone();

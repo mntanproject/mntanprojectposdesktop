@@ -17,6 +17,7 @@ public class Main {
         routes.put("purchase","com.mntanproject.pos.purchase.PurchaseApi");
         routes.put("item","com.mntanproject.pos.item.ItemApi");
         routes.put("purchaseitem","com.mntanproject.pos.purchase.PurchaseItemApi");
+        routes.put("sales","com.mntanproject.pos.sales.SalesApi");
 
 
         server.getRegisteredRoute().setRegisteredRoutes(routes);

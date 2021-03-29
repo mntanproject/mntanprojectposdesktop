@@ -196,7 +196,7 @@ public class GenericApi<T> {
         String returnMsg = null;
         HttpResponse response = null;
         boolean edited = false;
-        //System.out.println("Edit params: " + params);
+        System.out.println("Edit params: " + params);
         T obj = util.generateObject(params);
         //System.out.println("Edit: " + obj);
         T objFromDB = null;

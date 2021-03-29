@@ -1,23 +1,21 @@
 package com.mntanproject.pos.item;
 
-import com.mntanproject.pos.purchase.Purchase;
+
 import io.objectbox.annotation.Entity;
 import io.objectbox.annotation.Id;
-import io.objectbox.relation.ToOne;
-
-import java.util.Date;
 
 @Entity
 public class Item {
 
     @Id
     public long id;
-    public String name,barcode,notes;
-    public float quantityOnHand,purchasePrice,sellingPrice;
+    public String name, barcode, notes;
+    public float quantityOnHand, purchasePrice, sellingPrice;
+    public boolean deleted, salesHappened;
 
+    public Item() {
+    }
 
-
-    public Item(){}
     public Item(String name, String barcode, String notes, float quantityOnHand, float purchasePrice, float sellingPrice) {
         this.name = name;
         this.barcode = barcode;
@@ -26,8 +24,6 @@ public class Item {
         this.purchasePrice = purchasePrice;
         this.sellingPrice = sellingPrice;
     }
-
-
 
     public long getId() {
         return id;
@@ -85,6 +81,22 @@ public class Item {
         this.sellingPrice = sellingPrice;
     }
 
+    public boolean isDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        this.deleted = deleted;
+    }
+
+    public boolean isSalesHappened() {
+        return salesHappened;
+    }
+
+    public void setSalesHappened(boolean salesHappened) {
+        this.salesHappened = salesHappened;
+    }
+
     @Override
     public String toString() {
         return "Item{" +
@@ -95,6 +107,9 @@ public class Item {
                 ", quantityOnHand=" + quantityOnHand +
                 ", purchasePrice=" + purchasePrice +
                 ", sellingPrice=" + sellingPrice +
+                ", deleted=" + deleted +
+                ", salesHappened=" + salesHappened +
                 '}';
     }
+
 }

@@ -1,7 +1,6 @@
 package com.mntanproject.pos.purchase;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonArray;
 import com.google.gson.reflect.TypeToken;
 import com.mntanproject.pos.item.Item;
 import io.objectbox.annotation.Convert;
@@ -22,6 +21,7 @@ public class Purchase {
     public long supplierId;
     @Convert(converter = PurchaseCustomConverter.class, dbType = String.class)
     public ArrayList<Item> items;
+    public boolean deleted;
 
 
     public Purchase() {
@@ -57,6 +57,30 @@ public class Purchase {
 
     public void setLastEditedOn(Date lastEditedOn) {
         this.lastEditedOn = lastEditedOn;
+    }
+
+    public long getSupplierId() {
+        return supplierId;
+    }
+
+    public void setSupplierId(long supplierId) {
+        this.supplierId = supplierId;
+    }
+
+    public ArrayList<Item> getItems() {
+        return items;
+    }
+
+    public void setItems(ArrayList<Item> items) {
+        this.items = items;
+    }
+
+    public boolean isDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        this.deleted = deleted;
     }
 
     @Override
