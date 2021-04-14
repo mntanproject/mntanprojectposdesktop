@@ -37,12 +37,12 @@ public class MyObjectBox {
 
     public static BoxStoreBuilder builder() {
         BoxStoreBuilder builder = new BoxStoreBuilder(getModel());
-        builder.entity(Item_.__INSTANCE);
-        builder.entity(PurchaseItem_.__INSTANCE);
-        builder.entity(Supplier_.__INSTANCE);
         builder.entity(Customer_.__INSTANCE);
+        builder.entity(Item_.__INSTANCE);
         builder.entity(Purchase_.__INSTANCE);
+        builder.entity(PurchaseItem_.__INSTANCE);
         builder.entity(Sales_.__INSTANCE);
+        builder.entity(Supplier_.__INSTANCE);
         return builder;
     }
 
@@ -52,14 +52,36 @@ public class MyObjectBox {
         modelBuilder.lastIndexId(0, 0L);
         modelBuilder.lastRelationId(0, 0L);
 
-        buildEntityItem(modelBuilder);
-        buildEntityPurchaseItem(modelBuilder);
-        buildEntitySupplier(modelBuilder);
         buildEntityCustomer(modelBuilder);
+        buildEntityItem(modelBuilder);
         buildEntityPurchase(modelBuilder);
+        buildEntityPurchaseItem(modelBuilder);
         buildEntitySales(modelBuilder);
+        buildEntitySupplier(modelBuilder);
 
         return modelBuilder.build();
+    }
+
+    private static void buildEntityCustomer(ModelBuilder modelBuilder) {
+        EntityBuilder entityBuilder = modelBuilder.entity("Customer");
+        entityBuilder.id(1, 7962689150567666882L).lastPropertyId(11, 4864809658214195399L);
+        entityBuilder.flags(io.objectbox.model.EntityFlags.USE_NO_ARG_CONSTRUCTOR);
+
+        entityBuilder.property("id", PropertyType.Long).id(1, 5499334786606691170L)
+                .flags(PropertyFlags.ID);
+        entityBuilder.property("name", PropertyType.String).id(2, 990753746376828552L);
+        entityBuilder.property("company", PropertyType.String).id(3, 1373954827603172048L);
+        entityBuilder.property("contact", PropertyType.String).id(4, 4879202830493961259L);
+        entityBuilder.property("email", PropertyType.String).id(5, 3732291610775990495L);
+        entityBuilder.property("street", PropertyType.String).id(6, 1062719163979393218L);
+        entityBuilder.property("city", PropertyType.String).id(7, 1153278133070424890L);
+        entityBuilder.property("state", PropertyType.String).id(8, 3319362406259430515L);
+        entityBuilder.property("country", PropertyType.String).id(9, 8711235212729853168L);
+        entityBuilder.property("bank", PropertyType.String).id(10, 7285964555320907484L);
+        entityBuilder.property("notes", PropertyType.String).id(11, 4864809658214195399L);
+
+
+        entityBuilder.entityDone();
     }
 
     private static void buildEntityItem(ModelBuilder modelBuilder) {
@@ -87,6 +109,27 @@ public class MyObjectBox {
         entityBuilder.entityDone();
     }
 
+    private static void buildEntityPurchase(ModelBuilder modelBuilder) {
+        EntityBuilder entityBuilder = modelBuilder.entity("Purchase");
+        entityBuilder.id(3, 8050912771388907097L).lastPropertyId(7, 7188843611093211144L);
+        entityBuilder.flags(io.objectbox.model.EntityFlags.USE_NO_ARG_CONSTRUCTOR);
+
+        entityBuilder.property("id", PropertyType.Long).id(1, 7861542812595423630L)
+                .flags(PropertyFlags.ID);
+        entityBuilder.property("total", PropertyType.Float).id(2, 6643498890010629770L)
+                .flags(PropertyFlags.NOT_NULL);
+        entityBuilder.property("createdOn", PropertyType.Date).id(3, 8020995672773953470L);
+        entityBuilder.property("lastEditedOn", PropertyType.Date).id(5, 7321988419142898435L);
+        entityBuilder.property("supplierId", PropertyType.Long).id(4, 4517040027228705031L)
+                .flags(PropertyFlags.NOT_NULL);
+        entityBuilder.property("items", PropertyType.String).id(6, 4771216246225703307L);
+        entityBuilder.property("deleted", PropertyType.Bool).id(7, 7188843611093211144L)
+                .flags(PropertyFlags.NOT_NULL);
+
+
+        entityBuilder.entityDone();
+    }
+
     private static void buildEntityPurchaseItem(ModelBuilder modelBuilder) {
         EntityBuilder entityBuilder = modelBuilder.entity("PurchaseItem");
         entityBuilder.id(5, 8925388192994975963L).lastPropertyId(3, 8478296796232661141L);
@@ -98,6 +141,25 @@ public class MyObjectBox {
                 .flags(PropertyFlags.NOT_NULL);
         entityBuilder.property("itemId", PropertyType.Long).id(3, 8478296796232661141L)
                 .flags(PropertyFlags.NOT_NULL);
+
+
+        entityBuilder.entityDone();
+    }
+
+    private static void buildEntitySales(ModelBuilder modelBuilder) {
+        EntityBuilder entityBuilder = modelBuilder.entity("Sales");
+        entityBuilder.id(6, 5506063489304133269L).lastPropertyId(6, 9001945010635009182L);
+        entityBuilder.flags(io.objectbox.model.EntityFlags.USE_NO_ARG_CONSTRUCTOR);
+
+        entityBuilder.property("id", PropertyType.Long).id(1, 8047003261612331473L)
+                .flags(PropertyFlags.ID);
+        entityBuilder.property("customerId", PropertyType.Long).id(2, 1350033790222617973L)
+                .flags(PropertyFlags.NOT_NULL);
+        entityBuilder.property("total", PropertyType.Float).id(3, 7327978011833212040L)
+                .flags(PropertyFlags.NOT_NULL);
+        entityBuilder.property("date", PropertyType.Date).id(4, 2217543816329389985L);
+        entityBuilder.property("lastModified", PropertyType.Date).id(5, 861120916897041349L);
+        entityBuilder.property("items", PropertyType.String).id(6, 9001945010635009182L);
 
 
         entityBuilder.entityDone();
@@ -120,68 +182,6 @@ public class MyObjectBox {
         entityBuilder.property("country", PropertyType.String).id(9, 5398709359948897616L);
         entityBuilder.property("bank", PropertyType.String).id(10, 3316625132156260981L);
         entityBuilder.property("notes", PropertyType.String).id(11, 439665898141772501L);
-
-
-        entityBuilder.entityDone();
-    }
-
-    private static void buildEntityCustomer(ModelBuilder modelBuilder) {
-        EntityBuilder entityBuilder = modelBuilder.entity("Customer");
-        entityBuilder.id(1, 7962689150567666882L).lastPropertyId(11, 4864809658214195399L);
-        entityBuilder.flags(io.objectbox.model.EntityFlags.USE_NO_ARG_CONSTRUCTOR);
-
-        entityBuilder.property("id", PropertyType.Long).id(1, 5499334786606691170L)
-                .flags(PropertyFlags.ID);
-        entityBuilder.property("name", PropertyType.String).id(2, 990753746376828552L);
-        entityBuilder.property("company", PropertyType.String).id(3, 1373954827603172048L);
-        entityBuilder.property("contact", PropertyType.String).id(4, 4879202830493961259L);
-        entityBuilder.property("email", PropertyType.String).id(5, 3732291610775990495L);
-        entityBuilder.property("street", PropertyType.String).id(6, 1062719163979393218L);
-        entityBuilder.property("city", PropertyType.String).id(7, 1153278133070424890L);
-        entityBuilder.property("state", PropertyType.String).id(8, 3319362406259430515L);
-        entityBuilder.property("country", PropertyType.String).id(9, 8711235212729853168L);
-        entityBuilder.property("bank", PropertyType.String).id(10, 7285964555320907484L);
-        entityBuilder.property("notes", PropertyType.String).id(11, 4864809658214195399L);
-
-
-        entityBuilder.entityDone();
-    }
-
-    private static void buildEntityPurchase(ModelBuilder modelBuilder) {
-        EntityBuilder entityBuilder = modelBuilder.entity("Purchase");
-        entityBuilder.id(3, 8050912771388907097L).lastPropertyId(7, 7188843611093211144L);
-        entityBuilder.flags(io.objectbox.model.EntityFlags.USE_NO_ARG_CONSTRUCTOR);
-
-        entityBuilder.property("id", PropertyType.Long).id(1, 7861542812595423630L)
-                .flags(PropertyFlags.ID);
-        entityBuilder.property("total", PropertyType.Float).id(2, 6643498890010629770L)
-                .flags(PropertyFlags.NOT_NULL);
-        entityBuilder.property("createdOn", PropertyType.Date).id(3, 8020995672773953470L);
-        entityBuilder.property("lastEditedOn", PropertyType.Date).id(5, 7321988419142898435L);
-        entityBuilder.property("supplierId", PropertyType.Long).id(4, 4517040027228705031L)
-                .flags(PropertyFlags.NOT_NULL);
-        entityBuilder.property("items", PropertyType.String).id(6, 4771216246225703307L);
-        entityBuilder.property("deleted", PropertyType.Bool).id(7, 7188843611093211144L)
-                .flags(PropertyFlags.NOT_NULL);
-
-
-        entityBuilder.entityDone();
-    }
-
-    private static void buildEntitySales(ModelBuilder modelBuilder) {
-        EntityBuilder entityBuilder = modelBuilder.entity("Sales");
-        entityBuilder.id(6, 5506063489304133269L).lastPropertyId(6, 9001945010635009182L);
-        entityBuilder.flags(io.objectbox.model.EntityFlags.USE_NO_ARG_CONSTRUCTOR);
-
-        entityBuilder.property("id", PropertyType.Long).id(1, 8047003261612331473L)
-                .flags(PropertyFlags.ID);
-        entityBuilder.property("customerId", PropertyType.Long).id(2, 1350033790222617973L)
-                .flags(PropertyFlags.NOT_NULL);
-        entityBuilder.property("total", PropertyType.Float).id(3, 7327978011833212040L)
-                .flags(PropertyFlags.NOT_NULL);
-        entityBuilder.property("date", PropertyType.Date).id(4, 2217543816329389985L);
-        entityBuilder.property("lastModified", PropertyType.Date).id(5, 861120916897041349L);
-        entityBuilder.property("items", PropertyType.String).id(6, 9001945010635009182L);
 
 
         entityBuilder.entityDone();

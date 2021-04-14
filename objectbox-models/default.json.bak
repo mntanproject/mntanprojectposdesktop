@@ -262,9 +262,50 @@
         }
       ],
       "relations": []
+    },
+    {
+      "id": "6:5506063489304133269",
+      "lastPropertyId": "6:9001945010635009182",
+      "name": "Sales",
+      "properties": [
+        {
+          "id": "1:8047003261612331473",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:1350033790222617973",
+          "name": "customerId",
+          "type": 6,
+          "flags": 4
+        },
+        {
+          "id": "3:7327978011833212040",
+          "name": "total",
+          "type": 7,
+          "flags": 4
+        },
+        {
+          "id": "4:2217543816329389985",
+          "name": "date",
+          "type": 10
+        },
+        {
+          "id": "5:861120916897041349",
+          "name": "lastModified",
+          "type": 10
+        },
+        {
+          "id": "6:9001945010635009182",
+          "name": "items",
+          "type": 9
+        }
+      ],
+      "relations": []
     }
   ],
-  "lastEntityId": "5:8925388192994975963",
+  "lastEntityId": "6:5506063489304133269",
   "lastIndexId": "0:0",
   "lastRelationId": "0:0",
   "lastSequenceId": "0:0",

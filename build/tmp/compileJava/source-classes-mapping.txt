@@ -30,8 +30,8 @@ Main.java
  Main
 com/mntanproject/pos/supplier/SupplierApi.java
  com.mntanproject.pos.supplier.SupplierApi
-com/mntanproject/pos/item/Item.java
- com.mntanproject.pos.item.Item
+com/mntanproject/pos/item/ItemApi.java
+ com.mntanproject.pos.item.ItemApi
 com/mntanproject/pos/item/ItemParser.java
  com.mntanproject.pos.item.ItemParser
 com/mntanproject/pos/purchase/PurchaseItem.java
@@ -46,5 +46,5 @@ com/mntanproject/pos/purchase/TestPurchase.java
  com.mntanproject.pos.purchase.TestPurchase
 com/mntanproject/pos/customer/CustomerApi.java
  com.mntanproject.pos.customer.CustomerApi
-com/mntanproject/pos/item/ItemApi.java
- com.mntanproject.pos.item.ItemApi
+com/mntanproject/pos/item/Item.java
+ com.mntanproject.pos.item.Item
