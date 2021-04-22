@@ -1,13 +1,11 @@
 com/mntanproject/pos/customer/TestCustomer.java
  com.mntanproject.pos.customer.TestCustomer
-com/mntanproject/pos/sales/SalesApi.java
- com.mntanproject.pos.sales.SalesApi
-com/mntanproject/pos/item/TestItem.java
- com.mntanproject.pos.item.TestItem
-com/mntanproject/pos/sales/Sales.java
- com.mntanproject.pos.sales.Sales
- com.mntanproject.pos.sales.Sales$SalesItemsConverter
- com.mntanproject.pos.sales.Sales$SalesItemsConverter$1
+com/mntanproject/pos/customer/CustomerApi.java
+ com.mntanproject.pos.customer.CustomerApi
+com/mntanproject/pos/purchase/PurchaseItem.java
+ com.mntanproject.pos.purchase.PurchaseItem
+com/mntanproject/pos/item/Item.java
+ com.mntanproject.pos.item.Item
 com/mntanproject/pos/FaviconApi.java
  com.mntanproject.pos.FaviconApi
 com/mntanproject/pos/database/Util.java
@@ -20,31 +18,35 @@ com/mntanproject/pos/purchase/Purchase.java
  com.mntanproject.pos.purchase.Purchase
  com.mntanproject.pos.purchase.Purchase$PurchaseCustomConverter
  com.mntanproject.pos.purchase.Purchase$PurchaseCustomConverter$1
-com/mntanproject/pos/purchase/PurchaseApi.java
- com.mntanproject.pos.purchase.PurchaseApi
+com/mntanproject/pos/database/ObjectBoxDB.java
+ com.mntanproject.pos.database.ObjectBoxDB
 com/mntanproject/pos/purchase/PurchaseItemApi.java
  com.mntanproject.pos.purchase.PurchaseItemApi
 com/mntanproject/pos/supplier/Supplier.java
  com.mntanproject.pos.supplier.Supplier
-Main.java
- Main
+com/mntanproject/pos/customer/Customer.java
+ com.mntanproject.pos.customer.Customer
 com/mntanproject/pos/supplier/SupplierApi.java
  com.mntanproject.pos.supplier.SupplierApi
 com/mntanproject/pos/item/ItemApi.java
  com.mntanproject.pos.item.ItemApi
 com/mntanproject/pos/item/ItemParser.java
  com.mntanproject.pos.item.ItemParser
-com/mntanproject/pos/purchase/PurchaseItem.java
- com.mntanproject.pos.purchase.PurchaseItem
-com/mntanproject/pos/database/GenericApi.java
- com.mntanproject.pos.database.GenericApi
-com/mntanproject/pos/customer/Customer.java
- com.mntanproject.pos.customer.Customer
-com/mntanproject/pos/database/ObjectBoxDB.java
- com.mntanproject.pos.database.ObjectBoxDB
+com/mntanproject/pos/purchase/PurchaseApi.java
+ com.mntanproject.pos.purchase.PurchaseApi
 com/mntanproject/pos/purchase/TestPurchase.java
  com.mntanproject.pos.purchase.TestPurchase
-com/mntanproject/pos/customer/CustomerApi.java
- com.mntanproject.pos.customer.CustomerApi
-com/mntanproject/pos/item/Item.java
- com.mntanproject.pos.item.Item
+com/mntanproject/pos/sales/SalesApi.java
+ com.mntanproject.pos.sales.SalesApi
+com/mntanproject/pos/item/TestItem.java
+ com.mntanproject.pos.item.TestItem
+Main.java
+ Main
+com/mntanproject/pos/database/GenericApi.java
+ com.mntanproject.pos.database.GenericApi
+com/mntanproject/pos/sales/SalesTest.java
+ com.mntanproject.pos.sales.SalesTest
+com/mntanproject/pos/sales/Sales.java
+ com.mntanproject.pos.sales.Sales
+ com.mntanproject.pos.sales.Sales$SalesItemsConverter
+ com.mntanproject.pos.sales.Sales$SalesItemsConverter$1

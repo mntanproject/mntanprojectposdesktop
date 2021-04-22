@@ -11,10 +11,17 @@ public class ObjectBoxDB {
     private static BoxStore boxStore;
 
     public static void init() {
-         boxStore = MyObjectBox.builder().name("objectbox-mntanprojectpos-db").build();
+
+        boxStore = MyObjectBox.builder().name("objectbox-mntanprojectpos-db").build();
+        System.out.println("initialized boxstore from init");
+
     }
 
     public static BoxStore get() {
+        if (boxStore == null){
+            System.out.println("boxstore is null reinitialize boxstore");
+            init();
+        }
         return boxStore;
     }
 

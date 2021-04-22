@@ -14,6 +14,10 @@ import java.util.Date;
 @Entity
 public class Sales {
 
+    public Sales(){
+
+    }
+
     @Id
     public long id;
     public long customerId;
@@ -49,4 +53,15 @@ public class Sales {
     }
 
 
+    @Override
+    public String toString() {
+        return "Sales{" +
+                "id=" + id +
+                ", customerId=" + customerId +
+                ", total=" + total +
+                ", date=" + date +
+                ", lastModified=" + lastModified +
+                ", items=" + items +
+                '}';
+    }
 }
